@@ -35,7 +35,8 @@ Eye.application app do
         stdall "#{cwd}/log/api.eye.log"
         start_timeout 30.seconds
         stop_timeout 30.seconds
+        env 'PINTO_HOME' => ENV['HOME'] + '/opt/local/pinto'
+        env 'PINTO_REPOSITORY_ROOT' =>  ENV['HOME'] + '.jessy/repo/'
     end
 
 end
-
