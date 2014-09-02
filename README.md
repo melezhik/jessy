@@ -28,23 +28,19 @@ Pinto based build server for perl applications.
 - nodejs
 - libmysql 
 
-## Pinto repository root directory
+# Pinto repository root directory
 
 Will be created in $HOME/.jessy/repo directory. To migrate existed one simply run following:
 
     mkdir -p  $HOME/.jessy/repo/ && cp -r /path/to/existed/repo/root  $HOME/.jessy/repo
 
-## Artefacts root directory
-
-Will be created in $HOME/.jessy/projects directory. 
-
 # Gory details
 
-This is a concise explanation of pjam object model.
+This is a concise explanation of jessy object model.
  
-## Pjam 
+## jessy 
 
-Is a name of the build server. Pjam-on-rails - a long, "official" name, bear in mind that pjam application is written on ruby on rails framework.
+Is a name of the build server. jessy-on-rails - a long, "official" name, bear in mind that jessy application is written on ruby on rails framework.
 
 ## Application
 
@@ -52,18 +48,18 @@ Is arbitruary perl application.
 
 ## Component
 
-Is a part of application, an arbitrary source code stored in VCS. In pjam model an application is the _list_ of components.  Components may also be treated as perl modules, but not necessarily should be perl modules. Every component should has valid Build.PL|Makefile.PL file, placed at component's root directory in VCS.
+Is a part of application, an arbitrary source code stored in VCS. In jessy model an application is the _list_ of components.  Components may also be treated as perl modules, but not necessarily should be perl modules. Every component should has valid Build.PL|Makefile.PL file, placed at component's root directory in VCS.
 
-## Pjam dependency
+## jessy dependency
 
 This is the one of two types of things:
 
 - a __CPAN module__ - get resolved from cpan repository;
 - a __component__; a components of course may depend on CPAN modules
 
-## Pjam project  
+## jessy project  
 
-Is an application _view_ in pjam GUI.
+Is an application _view_ in jessy GUI.
 
 ## Build proccess 
 
@@ -81,7 +77,7 @@ The process of creation of distribution archive for an application. Schematicall
 
 - if pinto phase is finshed successfully then build install base is archived, archived build install base called __build artefact__.
 
-## Pjam build
+## jessy build
 
 Build is the "snapshot" of application plus some build's data. 
 
@@ -134,9 +130,9 @@ Here I "drop" some common actions which may be done with restfull api as well
 
 # PERL5LIB
 
-- You may setup $PERL5LIB variable via pjam/settings/ page. Pjam will add PERL5LIB both to pinto and compile phases.
+- You may setup $PERL5LIB variable via jessy/settings/ page. jessy will add PERL5LIB both to pinto and compile phases.
 
-- Also be noticed, that pjam add $HOME/lib/perl5 to $PERL5LIB during pinto phase. That may be usefull when one want to use (Module::Build, ExtUtils::MakeMaker or Module::Install ) which installed locally.
+- Also be noticed, that jessy add $HOME/lib/perl5 to $PERL5LIB during pinto phase. That may be usefull when one want to use (Module::Build, ExtUtils::MakeMaker or Module::Install ) which installed locally.
 
 
 # See also
