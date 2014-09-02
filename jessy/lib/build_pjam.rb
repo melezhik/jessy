@@ -1,5 +1,6 @@
 require 'fileutils'
 require 'open3'
+require 'net/http'
 
 class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :settings, :env  )
 
@@ -20,16 +21,43 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
              final_distribution_archive = nil
              final_distribution_revision = nil
 
+             build_async.log :debug, "create jc build"
+             uri = URI('http://pinto.webdev.x:3001/builds')
 
-             if build.has_ancestor?
-                 ancestor_cpanlib_path = "#{project.local_path}/#{build.ancestor.local_path}/cpanlib/*"
-                 _execute_command  "cp -r #{ancestor_cpanlib_path} #{project.local_path}/#{build.local_path}/cpanlib/"
-                 build_async.log :debug, "copied ancestor cpanlib path: #{ancestor_cpanlib_path} to #{project.local_path}/#{build.local_path}/cpanlib"
-             else
-                 FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/cpanlib/"
-                 _execute_command  "touch #{project.local_path}/#{build.local_path}/cpanlib/exists"
-                 build_async.log :debug, "build has no ancestor, just create #{project.local_path}/#{build.local_path}/cpanlib"
+             req = Net::HTTP::Post.new(uri)
+             req.set_form_data('build[key_id]' => "#{build.id}")
+
+             res = Net::HTTP.start(uri.hostname, uri.port) do |http|
+                http.request(req)
              end
+
+             case res
+             when Net::HTTPSuccess then
+                 js_id = res['build_id']
+                 build_async.log :debug, "create jc build ok. jc_id: #{js_id}"
+             else
+                raise "unsuccessfull response form jc server"
+             end
+
+             build_async.log :debug, "copy ancestor build via jc server,ancestor  build_id: #{build.ancestor.id}"
+
+             uri = URI("http://pinto.webdev.x:3001/builds/#{js_id}/copy")
+
+             req = Net::HTTP::Post.new(uri)
+             req.set_form_data('key_id' => "#{build.ancestor.id}")
+
+             res = Net::HTTP.start(uri.hostname, uri.port) do |http|
+                http.request(req)
+             end
+
+             case res
+             when Net::HTTPSuccess then
+                 build_async.log :debug, "copy ancestor build ok"
+             else
+                raise "unsuccessfull response form jc server"
+             end
+
+             raise "debugggggg"
 
              build.components.each  do |cmp|
 
