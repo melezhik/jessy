@@ -30,13 +30,13 @@ Pinto based build server for perl applications.
 
 ## Pinto repository root directory
 
-Will be created in $HOME/.pjam/repo directory. To migrate existed one simply run following:
+Will be created in $HOME/.jessy/repo directory. To migrate existed one simply run following:
 
-    mkdir -p  $HOME/.pjam/repo/ && cp -r /path/to/existed/repo/root  $HOME/.pjam/repo
+    mkdir -p  $HOME/.jessy/repo/ && cp -r /path/to/existed/repo/root  $HOME/.jessy/repo
 
 ## Artefacts root directory
 
-Will be created in $HOME/.pjam/projects directory. 
+Will be created in $HOME/.jessy/projects directory. 
 
 # Gory details
 
@@ -117,7 +117,7 @@ Here I "drop" some common actions which may be done with restfull api as well
 ## run build
 
 
-    curl -X POST http://your-pjam-server/projects/<project-id>/builds -d '' -f -o /dev/null
+    curl -X POST http://127.0.0.1/projects/<project-id>/builds -d '' -f -o /dev/null
 
 - __project-id__  - the project ID where you want to run build 
 
@@ -125,7 +125,7 @@ Here I "drop" some common actions which may be done with restfull api as well
 ## copy build from one project to another project 
 
 
-    curl -X POST http://your-pjam-server/projects/<project-id>/builds/<build-id>/revert -d '' -f -o /dev/null
+    curl -X POST http://127.0.0.1/projects/<project-id>/builds/<build-id>/revert -d '' -f -o /dev/null
 
 
 - __build-id__    - the build ID which you want to copy 
