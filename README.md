@@ -1,6 +1,6 @@
-# jessy
+# Synopsis
 
-Pinto based build server for perl applications.
+Jessy is the pinto based build server for perl applications.
 
 # Features
 * creates perl applications builds 
@@ -136,6 +136,7 @@ Here I "drop" some common actions which may be done with restfull api as well
 
 
 # See also
+- [jc](https://git.x/melezhik/jc/tree/master)
 - [pinto](https://github.com/thaljef/Pinto)
 - [ruby on rails](http://rubyonrails.org)
 - [delayed job](https://github.com/collectiveidea/delayed_job)
