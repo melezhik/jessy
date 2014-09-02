@@ -1,0 +1,57 @@
+  <%= link_to 'Back To Project', project_path(@project) %> |
+  <strong>Configuration</strong> |
+    <%= link_to 'Full Log', full_log_project_build_path(@project,@build), :title => 'full log' %> |
+    <%= link_to 'Distributions List', list_project_build_path(@project,@build), :title => 'list of distributions archives' %> |
+    <%= link_to 'Changes', changes_project_build_path(@project,@build), :title => 'changes for this build' %> |
+    <%= link_to 'Revert', revert_project_build_path(@project,@build), :method => :post, :title => 'revert project to this build' %>
+    <% unless @build.released?  %>
+    | <%= link_to "Delete", [@project, @build], :method => :delete, :title => 'permanently delete this build' %>
+    <% end %>
+
+<pre>
+  <strong>Project Title:</strong> <%= @project.title %>
+  <strong>Project ID:</strong> <%= @project.id %>
+  <strong>Build ID:</strong> <%= @build.id %>
+  <strong>State:</strong> <%= @build.state %>
+</pre>
+
+<% if ! @build.comment.nil?  %>
+  <strong>Annotation:</strong> 
+<pre>
+<%= @build.comment %>
+</pre>
+<% end %>
+
+
+    <table class="table-bordered table-striped table">
+      <tr>
+        <th>Component</th>
+        <th>URL</th>
+        <th>Schema</th>
+        <th>SCM Type</th>
+        <th>Git Branch</th>
+        <th>Git Folder</th>
+        <th>Is Main ?</th>
+        <th>revision</th>
+        <th>ID</th>
+      </tr>
+    <% @data.each do |item| %>
+    <tr>
+        <td><%= item[:indexed_url] %></td>
+        <td><%= item.url %></td>
+        <td><%= item[:schema] %></td>
+        <td><%= item[:scm_type] %></td>
+        <td><%= item[:scm_type] == 'git' ? (  item[:git_branch] || 'master' ) : '---' %></td>
+        <td><%= item[:git_folder] || '---' %></td>
+        <td><%= item[:is_distribution_url]? 'yes' : 'no'  %></td>
+        <td><%= item[:revision] || '---' %></td>
+        <td><%= item[:id] %></td>
+    </tr>
+    <% end %>
+    </table>
+[ 
+
+ <%= link_to 'Back To Project', project_path(@project) %> 
+
+]
+

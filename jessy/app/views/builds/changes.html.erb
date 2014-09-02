@@ -1,0 +1,74 @@
+<%= link_to 'Back To Project', project_path(@project) %> | 
+<strong>Changes</strong> |
+<%= link_to 'Full Log', full_log_project_build_path(@project,@build), :title => 'full log' %> |
+<%= link_to 'Distributions List', list_project_build_path(@project,@build), :title => 'list of distribution archives' %> |
+<%= link_to 'Configuration', configuration_project_build_path(@project,@build), :title => 'show build configuration' %> |
+<%= link_to 'Revert', revert_project_build_path(@project,@build), :method => :post, :title => 'revert project to this build' %>
+<% unless @build.released?  %>
+| <%= link_to "Delete", [@project, @build], :method => :delete, :title => 'permanently delete this build' %>
+<% end %>
+
+<pre>
+  <strong>Project Title:</strong> <%= @project.title %>
+  <strong>Project ID:</strong> <%= @project.id %>
+  <strong>Build ID:</strong> <%= @build.id %>
+  <strong>State:</strong> <%= @build.state %>
+  <strong>List of Changes:</strong> Between Build ID:<%= @build.id %> And Build ID:<%= @precendent.id %>
+</pre>
+
+
+
+<table class="table-bordered table-striped table">
+  <tr>
+    <th>Distribution Difference</th>
+    <th>Source Changes / Change Log</th>
+    <th>Choose other builds</th>
+  </tr>
+  <tr>
+    <td valign=top>
+<pre>
+<% @pinto_diff.each do |l| %>
+  <%= l  %>
+<% end %>
+</pre>
+   </td>
+    <td valign=top>
+  <%= raw(@snapshot_diff) %>
+  <strong>Change Log</strong>
+  <table class="table-bordered table-striped table">
+  <tr>
+    <th>Time</th>
+    <th>Commiter</th>
+    <th>Action</th>
+  </tr>
+  <% @history.each do |l| %>
+  <tr>
+    <td>
+        <%= l[:created_at].strftime('%B %d, %Y at %H:%M')  %>
+    </td>
+    <td>
+        <%= l[:commiter].nil? ? 'anonimous' : begin c = Resolv.new.getname(l[:commiter]) rescue l[:commiter] else c end   %>
+    </td>
+    <td>
+        <%= l[:action] %>
+    </td>
+  </tr>  
+  <% end %>
+  </table>
+   </td>
+    <td>
+        <%= form_for([@project, @build], url: { action: "changes" }, method: :get  ) do |f| %>
+             <%= f.select :id, options_for_select(@project.builds.reverse.map {|b| b.id}) %>
+             <%= f.submit "Compare" %> 
+       <% end %>
+    </td>
+ </tr>
+</table>
+
+[
+
+ <%= link_to 'Back To Project', project_path(@project) %>
+
+]
+
+

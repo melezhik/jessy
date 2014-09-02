@@ -1,0 +1,25 @@
+<pre>
+<strong>Recent Activities</strong>
+</pre>
+
+  <table class="table-bordered table-striped table">
+  <tr>
+    <th>Time</th>
+    <th>Commiter</th>
+    <th>Action</th>
+  </tr>
+  <% @history.each do |l| %>
+  <tr>
+    <td>
+        <%= l[:created_at].strftime('%B %d, %Y at %H:%M')  %>
+    </td>
+    <td>
+        <%= l[:commiter] || 'anonimous'   %>
+    </td>
+    <td>
+        <%= l[:action] %>
+    </td>
+  </tr>
+  <% end %>
+  </table>
+

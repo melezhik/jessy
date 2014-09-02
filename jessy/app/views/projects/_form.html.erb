@@ -1,0 +1,70 @@
+<%= form_for @project do |f| %>
+  <% if @project.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@project.errors.count, "error") %> prohibited
+      this project from being saved:</h2>
+    <ul>
+    <% @project.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title, :size => "100" %>
+  </p>
+ 
+  <p>
+    <%= f.label :text %><br>
+    <%= f.text_area :text, :size => "102x5" %>
+  </p>
+
+  <p>
+     <%= f.check_box :verbose, { :value => true , :checked => @project[:verbose] } %>
+     <%= f.label(:verbose, "verbose logging") %>
+  </p>
+
+  <p>
+    <%= f.check_box :notify, { :value => true , :checked => @project[:notify] } %>
+    <%= f.label(:force_mode, "notify me when builds fail/success") %>
+  </p>
+
+  <p>
+    <%= f.label :recipients %><br>
+    <%= f.text_field :recipients, :size => "100" %>
+  </p>
+
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+ <% end %>
+
+ <%- unless @project.sources_ordered.empty? %>
+
+<h2> Change project components </h2>
+    <ol>   
+    <% @project.sources_ordered.each do |item| %>
+      <li>
+
+        <% if item.id == @project.distribution_source_id %>
+             [<%= item[:scm_type] %>] <%= link_to item._indexed_url , item.url, title: "SCM TYPE:#{item.scm_type};  ID:#{item.id};  SN:#{item.sn}; Application Main Component" %> [ Application Main Component
+        <% else %>
+             [<%= item[:scm_type] %>] <%= link_to item._indexed_url , item.url, title: "SCM TYPE:#{item.scm_type};  ID:#{item.id};  SN:#{item.sn};" %>
+            [ <%= link_to 'App', [ :app, item.project, item   ], method: :post,  title: "mark this source as an application source" %>
+        <% end %>
+        <%= link_to 'Delete', [ item.project, item], method: :delete, title: "remove this source", data: { confirm: "You are about to delete source # #{item[:id]} in project #{@project[:id]}. Are you shure ?" }   %> ]
+      </li>
+    <% end %>
+    </ol>
+
+
+[ <%= link_to "Change sources sort order",  edit_project_source_path( @project, @project.sources_ordered.first ) %> ]
+
+<% end %>
+
+
+
+

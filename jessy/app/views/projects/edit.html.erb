@@ -1,0 +1,27 @@
+<%= link_to 'Back To Project', project_path(@project) %> | <%= link_to 'Run New Build', url_for([@project, :builds]), method: :post  %>
+<h2>Update Project Settings </h2>
+
+<pre>
+    ID : <%= @project[:id] %>
+</pre>
+
+<%= render 'form' %>
+
+<h2>Add component to project</h2>
+<%= form_for([@project, @project.sources.build]) do |f| %>
+  <p>
+    <%= f.label 'Scm Type' %><br>
+    <%= f.select :scm_type, options_for_select(['svn', 'git' ]),  {}, :onChange=>"javascript: if (this.selectedIndex == 1) { \n this.form.source_git_branch.disabled = false; \n this.form.source_git_folder.disabled = false; \n }; \n\n if (this.selectedIndex == 0 ) { \n this.form.source_git_branch.disabled = true; \n this.form.source_git_folder.disabled = true; \n this.form.source_git_branch.value = ''; this.form.source_git_folder.value = ''; };  "  %><br>
+    <%= f.label :git_branch %><br>
+    <%= f.text_field :git_branch, :disabled => true %><br>
+    <%= f.label :git_folder %><br>
+    <%= f.text_field :git_folder, :disabled => true %>
+  </p>
+  <p>
+    <%= f.label :url %><br>
+    <%= f.text_field :url , :size => '100' %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

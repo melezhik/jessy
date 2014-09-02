@@ -1,0 +1,47 @@
+<hr>
+
+<h1>Projects List</h1>
+ 
+<table class="table-bordered table-striped table">
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Text</th>
+    <th>Last Build</th>
+    <th>Artefacts</th>
+    <th>Builds Total / Builds Succeeded </th>
+    <th>Actions</th>
+  </tr>
+ 
+  <% @projects.each do |item| %>
+    <tr>
+      <td><%= item[:id] %></td>
+      <td><%= link_to item.title , project_path(item) %></td>
+      <td><%= item.text %></td>
+      <td>
+        <% if ! item.last_build.nil? %>
+            <%= link_to "ID: #{item.last_build.id}", [item, item.last_build] %> - <%= item.last_build[:state] %> <%= item.last_build[:updated_at].strftime('%B %d, %Y at %H:%M') %>
+        <% else %>
+            ---
+        <% end %>
+      </td>
+      <td>
+        <% if ! item.last_build.nil? and ! item.last_build.distribution_name.nil? %>
+             <%= link_to "#{item.last_build.distribution_name}", url_for([item,item.last_build]) + '/artefacts/' + item.last_build.distribution_name  %>
+        <% else %>
+            ---
+        <% end %>
+      </td>
+      <td>
+            <%= Build.where("project_id = ?",item.id).count %> /
+            <%= Build.where("project_id = ? and state = ?",item.id, 'succeeded' ).count %>
+      </td>  
+      <td>
+        <%= link_to 'Show', project_path(item) %> | <%= link_to 'Edit', edit_project_path(item) %> |<%= link_to 'Run New Build', [item, item.builds.build], method: :post %> | <%= link_to 'Delete', project_path(item), method: :delete, data: { confirm:    "You are about to delete project # #{item[:id]}. Are you shure ?" }  %> | <%= link_to 'Acitivity Log', activity_project_path(item), :title => "show project's activity log"  %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<hr>
+
