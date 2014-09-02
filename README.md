@@ -17,51 +17,16 @@ Pinto based build server for perl applications.
 
 # Installation
 
-    git clone https://github.com/melezhik/pjam-on-rails.git
-    cd pjam-on-rails/ui
+    su - jessy
+    git git@git.x:melezhik/jessy.git
+    cd jessy/jessy
     bundle install # install ruby dependencies
-    nano config/databases.yml # setup database backend 
-    export RAILS_ENV=production
-    rake db:migrate # initialize database
-    bundle exec rake assets:precompile
-    ./bin/delayed_job start # start builds scheduler  
-    rails server -d # start pjam server binded to 0.0.0.0:3000
+    eye load config/eye/app.rb
 
 
 # Prerequisites
 - nodejs
 - libmysql 
-
-# Configuration
-All you need is to setup database configuration. Choose any driver you like, but mysql is recommended for production usage:
-
-    nano config/databases.yml
-    cat config/databases.yml
-    
-    production:
-        adapter: mysql
-        database: pjam_data
-        username: root
-        password: supersecret
-        host: localhost
-
-
-## None production/development configuration
-
-For none production pjam usage you should omit exporting RAILS_ENV. In this case you may use sqlite database engine instead of mysql: 
-
-    nano config/databases.yml
-    cat config/databases.yml
-
-    development:
-        adapter: sqlite3
-        database: db/development.sqlite3
-        pool: 5
-        timeout: 5000
-
-    rake db:migrate # initialize database
-    ./bin/delayed_job start # start builds scheduler  
-    rails server -d # start pjam server binded to 127.0.0.1:3000
 
 ## Pinto repository root directory
 
