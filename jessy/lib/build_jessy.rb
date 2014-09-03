@@ -130,11 +130,11 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
                 while true or processed_cnt == distributions_list.size
                     distributions_list.each do |i|
                          resp = jcc.request :get, "/builds/#{jc_id}/target_state?name=PINTO/#{i[:archive_name_with_revision]}"
-                         build_async.log :debug, "PINTO/#{i[:archive_name_with_revision]} : #{resp.headers[:target_state]}"
+                         # build_async.log :debug, "PINTO/#{i[:archive_name_with_revision]} : #{resp.headers[:target_state]}" 
                          if resp.headers[:target_state] == 'ok'
                              processed_cnt += 1
-                             item[:cmp].update!({ :revision => item[:revision] })    
-                             item[:cmp].save!
+                             i[:cmp].update!({ :revision => i[:revision] })    
+                             i[:cmp].save!
                          elsif resp.headers[:target_state] == 'fail'
                              processed_cnt += 1
                              failed_cnt += 1
