@@ -1,7 +1,7 @@
 require 'fileutils'
 require 'open3'
 
-class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :settings, :env  )
+class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :settings, :env  )
 
     def run
 
@@ -34,8 +34,12 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
                 build_async.log :debug, "copy ancestor build via jc server, ancestor build_id: #{build.ancestor.id}"
                 resp = jcc.request :post, "/builds/#{jc_id}/copy", 'key_id' => "#{build.ancestor.id}"
                 build_async.log :debug, "copy jc build ok"
+                build.update!({ :has_install_base => true })
+                build.save!
             else
                 build_async.log :warn, "build has no ancestor, hope it's okay"
+                build.update!({ :has_install_base => true })
+                build.save!
             end
             
             raise "debugggggg"
