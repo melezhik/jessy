@@ -1,6 +1,5 @@
 require 'fileutils'
 require 'open3'
-require 'rest_client'
 
 class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :settings, :env  )
 
@@ -13,8 +12,12 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
          build_async.log :debug,  "build ancestor: #{build.has_ancestor? ? build.ancestor.id : 'not set'}"
 
          _initialize
+            
 
          raise "main application component not found for this build" unless build.has_main_component?
+
+         jcc = JCClient.new 'http://pinto.webdev.x:3001'
+
          build_async.log :debug,  "main application component found: #{build.main_component[:indexed_url]}"
   
             distributions_list = []
@@ -23,25 +26,13 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
 
             build_async.log :debug, "create jc build"
 
-            resp = RestClient.post 'http://pinto.webdev.x:3001/builds', 'build[key_id]' => "#{build.id}" 
-
-            if resp.code == 200
-                #build_async.log :debug, "#{resp.headers}"
-                jc_id = resp.headers[:build_id]
-                build_async.log :debug, "create jc build ok. js_id:#{jc_id}"
-            else
-                raise "unsuccessfull response form jc server: <#{resp.code}>"
-            end
+            resp = jcc.request :post, '/builds',  'build[key_id]' => "#{build.id}" 
+            jc_id = resp.headers[:build_id]
+            build_async.log :debug, "create jc build ok. js_id:#{jc_id}"
              
             build_async.log :debug, "copy ancestor build via jc server, ancestor build_id: #{build.ancestor.id}"
-            
-            resp = RestClient.post "http://pinto.webdev.x:3001/builds/#{jc_id}/copy", 'key_id' => "#{build.ancestor.id}"
-
-            if resp.code == 200
-                build_async.log :debug, "copy jc build ok"
-            else
-                raise "unsuccessfull response form jc server: <#{resp.code}>"
-            end
+            resp = jcc.request :post, "/builds/#{jc_id}/copy", 'key_id' => "#{build.ancestor.id}"
+            build_async.log :debug, "copy jc build ok"
             
             raise "debugggggg"
             
