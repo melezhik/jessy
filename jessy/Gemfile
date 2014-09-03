@@ -76,3 +76,5 @@ gem 'sass-rails'
 
 gem 'eye'
 
+gem 'rest_client'
+

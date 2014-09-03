@@ -23,6 +23,7 @@ Eye.application app do
                 stdall "#{cwd}/log/dj.eye.log"
                 start_timeout 30.seconds
                 stop_timeout 30.seconds
+                env 'RESTCLIENT_LOG' => "#{cwd}/log/rc.log"
             end
         end
 

@@ -1,6 +1,6 @@
 require 'fileutils'
 require 'open3'
-require 'net/http'
+require 'rest_client'
 
 class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :settings, :env  )
 
@@ -17,49 +17,35 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
          raise "main application component not found for this build" unless build.has_main_component?
          build_async.log :debug,  "main application component found: #{build.main_component[:indexed_url]}"
   
-             distributions_list = []
-             final_distribution_archive = nil
-             final_distribution_revision = nil
+            distributions_list = []
+            final_distribution_archive = nil
+            final_distribution_revision = nil
 
-             build_async.log :debug, "create jc build"
-             uri = URI('http://pinto.webdev.x:3001/builds')
+            build_async.log :debug, "create jc build"
 
-             req = Net::HTTP::Post.new(uri)
-             req.set_form_data('build[key_id]' => "#{build.id}")
+            resp = RestClient.post 'http://pinto.webdev.x:3001/builds', 'build[key_id]' => "#{build.id}" 
 
-             res = Net::HTTP.start(uri.hostname, uri.port) do |http|
-                http.request(req)
-             end
+            if resp.code == 200
+                #build_async.log :debug, "#{resp.headers}"
+                jc_id = resp.headers[:build_id]
+                build_async.log :debug, "create jc build ok. js_id:#{jc_id}"
+            else
+                raise "unsuccessfull response form jc server: <#{resp.code}>"
+            end
+             
+            build_async.log :debug, "copy ancestor build via jc server, ancestor build_id: #{build.ancestor.id}"
+            
+            resp = RestClient.post "http://pinto.webdev.x:3001/builds/#{jc_id}/copy", 'key_id' => "#{build.ancestor.id}"
 
-             case res
-             when Net::HTTPSuccess then
-                 js_id = res['build_id']
-                 build_async.log :debug, "create jc build ok. jc_id: #{js_id}"
-             else
-                raise "unsuccessfull response form jc server"
-             end
-
-             build_async.log :debug, "copy ancestor build via jc server,ancestor  build_id: #{build.ancestor.id}"
-
-             uri = URI("http://pinto.webdev.x:3001/builds/#{js_id}/copy")
-
-             req = Net::HTTP::Post.new(uri)
-             req.set_form_data('key_id' => "#{build.ancestor.id}")
-
-             res = Net::HTTP.start(uri.hostname, uri.port) do |http|
-                http.request(req)
-             end
-
-             case res
-             when Net::HTTPSuccess then
-                 build_async.log :debug, "copy ancestor build ok"
-             else
-                raise "unsuccessfull response form jc server"
-             end
-
-             raise "debugggggg"
-
-             build.components.each  do |cmp|
+            if resp.code == 200
+                build_async.log :debug, "copy jc build ok"
+            else
+                raise "unsuccessfull response form jc server: <#{resp.code}>"
+            end
+            
+            raise "debugggggg"
+            
+            build.components.each  do |cmp|
 
                  build_async.log :info,  "processing component: #{cmp[:indexed_url]}"
     
