@@ -118,8 +118,9 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
         end
 
         # HELLO
-        dlist = distributions_list.map { |i| i[:archive_name_with_revision]  }
-        resp = jcc.request :post, "/builds/#{jc_id}/install", 't[]' =>  dlist, 'cpan_mirror' => "http://melezhik.x:4000/stacks/#{project.id}-#{build.id}"
+        build_async.log :debug, "schedulle targets install into jc service"
+        dlist = distributions_list.map { |i| "t[]=PINTO/#{i[:archive_name_with_revision]}"  }.join '&'
+        resp = jcc.request :post, "/builds/#{jc_id}/install?#{dlist}", 'cpan_mirror' => "http://melezhik.x:4000/stacks/#{project.id}-#{build.id}"
         raise "debugggggg"
 
         distributions_list.each do |item|
