@@ -53,7 +53,7 @@ class Build < ActiveRecord::Base
     end
 
     def ancestor
-         Build.limit(1).order( id: :desc ).where(' project_id = ? AND id < ? AND has_stack = ? ', project_id, id, true ).first
+         Build.limit(1).order( id: :desc ).where(' project_id = ? AND id < ? AND has_stack = ?  AND has_install_base = ? ', project_id, id, true, true ).first
     end
 
     def precedent
@@ -82,6 +82,10 @@ class Build < ActiveRecord::Base
 
     def succeeded?
         state == 'succeeded'
+    end
+
+    def has_install_base?
+        has_install_base
     end
 end
 

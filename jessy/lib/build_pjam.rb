@@ -30,9 +30,13 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
             jc_id = resp.headers[:build_id]
             build_async.log :debug, "create jc build ok. js_id:#{jc_id}"
              
-            build_async.log :debug, "copy ancestor build via jc server, ancestor build_id: #{build.ancestor.id}"
-            resp = jcc.request :post, "/builds/#{jc_id}/copy", 'key_id' => "#{build.ancestor.id}"
-            build_async.log :debug, "copy jc build ok"
+            if build.has_ancestor?
+                build_async.log :debug, "copy ancestor build via jc server, ancestor build_id: #{build.ancestor.id}"
+                resp = jcc.request :post, "/builds/#{jc_id}/copy", 'key_id' => "#{build.ancestor.id}"
+                build_async.log :debug, "copy jc build ok"
+            else
+                build_async.log :warn, "build has no ancestor, hope it's okay"
+            end
             
             raise "debugggggg"
             
