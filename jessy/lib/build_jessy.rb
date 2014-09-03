@@ -127,10 +127,11 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
 
         begin
             status = Timeout::timeout(ts) {
-                while true or processed_cnt == distributions_list.size
+                while processed_cnt < distributions_list.size
                     distributions_list.each do |i|
+                         #resp = jcc.request :get, "/builds/#{jc_id}/short_log"
+                         #build_async.log :debug, "#{resp}" 
                          resp = jcc.request :get, "/builds/#{jc_id}/target_state?name=PINTO/#{i[:archive_name_with_revision]}"
-                         # build_async.log :debug, "PINTO/#{i[:archive_name_with_revision]} : #{resp.headers[:target_state]}" 
                          if resp.headers[:target_state] == 'ok'
                              processed_cnt += 1
                              i[:cmp].update!({ :revision => i[:revision] })    
