@@ -1,5 +1,6 @@
 require 'fileutils'
 require 'open3'
+require 'timeout'
 
 class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :settings, :env  )
 
@@ -121,13 +122,41 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
         build_async.log :debug, "schedulle targets install into jc service"
         dlist = distributions_list.map { |i| "t[]=PINTO/#{i[:archive_name_with_revision]}"  }.join '&'
         resp = jcc.request :post, "/builds/#{jc_id}/install?#{dlist}", 'cpan_mirror' => "http://melezhik.x:4000/stacks/#{project.id}-#{build.id}"
-        raise "debugggggg"
 
-        distributions_list.each do |item|
-            _install_pinto_distribution item[:archive_name_with_revision]
-             item[:cmp].update!({ :revision => item[:revision] })    
-             item[:cmp].save!
+        processed_cnt = 0; failed_cnt = 0; ts = 600
+
+        begin
+            status = Timeout::timeout(ts) {
+                while true or processed_cnt == distributions_list.size
+                    distributions_list.each do |item|
+                         resp = jcc.request :get, "/builds/#{jc_id}/target_state", :name => "PINTO/#{i[:archive_name_with_revision]}"
+                         build_async.log :debug, "PINTO/#{i[:archive_name_with_revision]} : #{reps.headers[:target_state]}"
+                         if reps.headers[:target_state] == 'ok'
+                             processed_cnt += 1
+                             item[:cmp].update!({ :revision => item[:revision] })    
+                             item[:cmp].save!
+                         elsif reps.headers[:target_state] == 'fail'
+                             processed_cnt += 1
+                             failed_cnt += 1
+                         end
+                    end
+                end
+            }
+        rescue Timeout::Error => e
+            resp = jcc.request :get, "/builds/#{jc_id}/summary"
+            raise "timeout exceeded (#{ts} seconds) while waiting response from jc server. build summary: #{resp}"
         end
+
+
+        resp = jcc.request :get, "/builds/#{jc_id}/summary"
+        build_async.log :debug, "js build summary: #{resp}"
+
+
+        if failed_cnt > 0
+            raise "#{failed_cnt} targets failed to install"
+        end
+    
+        raise "debugggggg"
 
         if final_distribution_archive.nil?
             raise "main component's distribution archive not found!" 
@@ -137,6 +166,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
         distribution_archive_local_path = _artefact_final_distribution final_distribution_archive, final_distribution_revision
         build_async.log :debug, "main component's distribution archive has been successfully created and artefactored as #{distribution_archive_local_path}"
         build_async.log :info,  "done building"
+
     end
 
       def _execute_command(cmd, raise_ex = true)
@@ -220,9 +250,6 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
         archive_name_with_revision
     end
 
-    def _install_pinto_distribution archive_name
-        _execute_command("#{_set_perl5lib} && #{modulebuildrc} export PINTO_LOCKFILE_TIMEOUT=10000 &&  pinto -r #{settings.pinto_repo_root} install -s #{_stack} -v --no-color #{cpanm_flags} -l #{project.local_path}/#{build.local_path}/cpanlib  PINTO/#{archive_name}") 
-    end
 
     def _artefact_final_distribution final_distribution_archive, revision
 
