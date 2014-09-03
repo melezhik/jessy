@@ -24,6 +24,7 @@ Eye.application app do
                 start_timeout 30.seconds
                 stop_timeout 30.seconds
                 env 'RESTCLIENT_LOG' => "#{cwd}/log/rc.log"
+                env 'PINTO_REPOSITORY_ROOT' =>  ENV['HOME'] + '/.jessy/repo/'
             end
         end
 
@@ -37,7 +38,7 @@ Eye.application app do
         start_timeout 30.seconds
         stop_timeout 30.seconds
         env 'PINTO_HOME' => ENV['HOME'] + '/opt/local/pinto'
-        env 'PINTO_REPOSITORY_ROOT' =>  ENV['HOME'] + '.jessy/repo/'
+        env 'PINTO_REPOSITORY_ROOT' =>  ENV['HOME'] + '/.jessy/repo/'
     end
 
 end

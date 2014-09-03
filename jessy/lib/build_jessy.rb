@@ -42,7 +42,6 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
                 build.save!
             end
             
-            raise "debugggggg"
             
             build.components.each  do |cmp|
 
@@ -117,6 +116,11 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
     
     
         end
+
+        # HELLO
+        dlist = distributions_list.map { |i| i[:archive_name_with_revision]  }
+        resp = jcc.request :post, "/builds/#{jc_id}/install", 't[]' =>  dlist, 'cpan_mirror' => "http://melezhik.x:4000/stacks/#{project.id}-#{build.id}"
+        raise "debugggggg"
 
         distributions_list.each do |item|
             _install_pinto_distribution item[:archive_name_with_revision]
