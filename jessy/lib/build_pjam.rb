@@ -16,7 +16,7 @@ class BuildPjam < Struct.new( :build_async, :project, :build, :distributions, :s
 
          raise "main application component not found for this build" unless build.has_main_component?
 
-         jcc = JCClient.new 'http://pinto.webdev.x:3001'
+         jcc = JCC.new 'http://pinto.webdev.x:3001'
 
          build_async.log :debug,  "main application component found: #{build.main_component[:indexed_url]}"
   
