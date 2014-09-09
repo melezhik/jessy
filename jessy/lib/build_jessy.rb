@@ -24,7 +24,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
             distributions_list = []
             final_distribution_archive = nil
             final_distribution_revision = nil
-
+            
             build_async.log :debug, "create jc build"
 
             resp = jcc.request :post, '/builds',  'build[key_id]' => "#{build.id}" 
@@ -162,7 +162,11 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
         end
 
 
-        resp = jcc.request :post, "/builds/#{jc_id}/artefact", 'url' => "http://melezhik.x:4000/stacks/#{project.id}-#{build.id}/authors/id/P/PI/PINTO/#{final_distribution_archive}"
+        resp = jcc.request( 
+            :post, "/builds/#{jc_id}/artefact", 
+            'url' => "http://melezhik.x:4000/stacks/#{project.id}-#{build.id}/authors/id/P/PI/PINTO/#{final_distribution_archive}",
+            'orig_dir' => "#{final_distribution_archive.sub(('.' + final_distribution_revision + '-')).sub('.tar.gz')}"
+        )
 
         dist_name = resp.headers[:dist_name]
         build.update({ :distribution_name => dist_name })
