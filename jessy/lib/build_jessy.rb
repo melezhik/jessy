@@ -157,15 +157,18 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
             raise "#{failed_cnt} targets failed to install"
         end
     
-        raise "debugggggg"
-
         if final_distribution_archive.nil?
             raise "main component's distribution archive not found!" 
         end
 
 
-        distribution_archive_local_path = _artefact_final_distribution final_distribution_archive, final_distribution_revision
-        build_async.log :debug, "main component's distribution archive has been successfully created and artefactored as #{distribution_archive_local_path}"
+        resp = jcc.request :post, "/builds/#{jc_id}/artefact", 'url' => "http://melezhik.x:4000/stacks/#{project.id}-#{build.id}/authors/id/P/PI/PINTO/#{final_distribution_archive}"
+
+        dist_name = resp.headers[:dist_name]
+        build.update({ :distribution_name => dist_name })
+        build.save
+
+        build_async.log :debug, "artefact successfully created: #{dist_name}"
         build_async.log :info,  "done building"
 
     end
@@ -249,34 +252,6 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
         cmd <<  "export PINTO_LOCKFILE_TIMEOUT=10000 &&  pinto -r #{settings.pinto_repo_root} add -s #{_stack} #{settings.skip_missing_prerequisites_as_pinto_param} --author PINTO -v --use-default-message --no-color --recurse #{archive_name_with_revision}"
         _execute_command(cmd.join(' && '))
         archive_name_with_revision
-    end
-
-
-    def _artefact_final_distribution final_distribution_archive, revision
-
-	    timestamp = Time.now.strftime '%Y-%m-%d_%H-%M-%S'
-
-	    original_distribution_archive_dir = final_distribution_archive.sub(".#{revision}.tar.gz",'')
-
-	    final_distribution_archive_with_timestamp = final_distribution_archive.sub('.tar.gz',"-#{timestamp}.tar.gz")
-	    final_distribution_archive_dir_with_timestamp = final_distribution_archive.sub('.tar.gz',"-#{timestamp}")
-	
-        cmd = []
-        cmd <<  "cd #{project.local_path}/#{build.local_path}/artefacts/"
-        cmd << "cp #{settings.pinto_repo_root}/authors/id/P/PI/PINTO/#{final_distribution_archive} ."
-        cmd << "gunzip  #{final_distribution_archive}"
-        cmd << "tar -xf #{final_distribution_archive.sub('.gz','')}"
-    	cmd << "mv #{original_distribution_archive_dir} #{final_distribution_archive_dir_with_timestamp}"
-        cmd << "cd #{final_distribution_archive_dir_with_timestamp}"
-        cmd << "cp -r #{project.local_path}/#{build.local_path}/cpanlib ."
-        cmd << "cd ../"
-        cmd << "tar -czf #{final_distribution_archive_with_timestamp} #{final_distribution_archive_dir_with_timestamp}"
-        _execute_command(cmd.join(' && '))
-
-        build.update({ :distribution_name => final_distribution_archive_with_timestamp })
-        build.save
-
-        "#{project.local_path}/#{build.local_path}/artefacts/#{final_distribution_archive_with_timestamp}"        
     end
 
 
