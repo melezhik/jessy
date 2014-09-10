@@ -215,13 +215,13 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
 
         if File.exists? "#{project.local_path}/#{build.local_path}/#{cmp.local_path}/Build.PL"
 
-            if settings.verbose == true
+            if project[:verbose] == true
     	        cmd <<  "perl Build.PL --quiet 1>/dev/null"
             else
     	        cmd <<  "perl Build.PL --quiet 1>/dev/null 2>&1"
             end
 
-            if settings.verbose == true
+            if project[:verbose] == true
                 cmd <<  "./Build realclean && perl Build.PL --quiet 1>/dev/null"
             else
                 cmd <<  "./Build realclean && perl Build.PL --quiet 1>/dev/null 2>&1"

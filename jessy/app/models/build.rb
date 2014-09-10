@@ -63,7 +63,7 @@ class Build < ActiveRecord::Base
          a = File.readlines(log_path)
          s = a.size
          if s >= recent_log_entries_number
-            a[recent_log_entries_number .. -1]
+            a[-recent_log_entries_number .. -1]
          else
             a
          end   
@@ -74,7 +74,7 @@ class Build < ActiveRecord::Base
     end
 
     def recent_log_entries_number
-        70
+        100
     end
 
     def short_comment
