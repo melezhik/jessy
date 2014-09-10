@@ -40,8 +40,6 @@ Ui::Application.routes.draw do
                 post    'revert'
             end
 
-            resources :logs do
-            end
 
             resources :shanpshots do
             end
