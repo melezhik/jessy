@@ -8,7 +8,7 @@ class Build < ActiveRecord::Base
 #    validates :comment, presence: true , length: { minimum: 10 }
 
     def log_path
-        "#{local_path}/log.txt"
+        "#{project.local_path}/#{local_path}/log.txt"
     end
 
     def logger
@@ -22,7 +22,7 @@ class Build < ActiveRecord::Base
     end
 
     def log level, line
-        logger.send( level, line )
+        logger.send( level, line.chomp )
     end
 
 
@@ -51,7 +51,7 @@ class Build < ActiveRecord::Base
     end
 
     def has_logs?
-        logs.empty? == false
+        File.readlines(log_path).size > 0
     end
 
 
@@ -59,14 +59,14 @@ class Build < ActiveRecord::Base
          a = File.readlines(log_path)
          s = a.size
          if s >= recent_log_entries_number
-            a[recent_log_entries_number .. -1].reverse
+            a[recent_log_entries_number .. -1]
          else
             a.reverse
          end   
     end
 
     def all_log_entries
-        File.readlines(log_path).reverse
+        File.readlines(log_path)
     end
 
     def recent_log_entries_number

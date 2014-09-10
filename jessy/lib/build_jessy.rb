@@ -163,7 +163,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
 
 
         url_p = "http://melezhik.x:4000/stacks/#{project.id}-#{build.id}/authors/id/P/PI/PINTO/#{final_distribution_archive}"
-        orig_dir_p = final_distribution_archive.sub(('.' + final_distribution_revision + '-')).sub('.tar.gz')
+        orig_dir_p = final_distribution_archive.sub(".#{final_distribution_revision}-").sub('.tar.gz')
         resp = jcc.request :post, "/builds/#{jc_id}/artefact", 'url' => url_p, 'orig_dir' => orig_dir_p
 
         dist_name = resp.headers[:dist_name]
@@ -175,46 +175,36 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
 
     end
 
-      def _execute_command(cmd, raise_ex = true)
-
-        retval = false
-    	build_async.log :info, "running command: #{cmd}"
-
-        chunk = ""
-
-        Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
-
-            i = 0; chunk = []
-            while line = stdout_err.gets
-                i += 1
-                chunk << line
-                if chunk.size > 30
-                    build_async.log :debug,  ( chunk.join "" )
-                    chunk = []
+    def _execute_command(cmd, raise_ex = true)
+    
+            build_async.log :info, "running command: #{cmd}"
+    
+    
+            Open3.popen3(cmd) do |stdin, stdout, stderr, wait_thr|
+    
+                while line = stdout.gets("\n")
+                    build_async.log :debug,  line
+                end
+    
+                while line = stderr.gets("\n")
+                    build_async.log :error,  line
+                end
+    
+                exit_status = wait_thr.value
+    
+    
+                if exit_status.success?
+                    build_async.log :debug, "command successfully executed, exit status: #{exit_status}"
+                else
+                    build_async.log :error, "command unsuccessfully executed, exit status: #{exit_status}"
+                    raise "command unsuccessfully executed, exit status: #{exit_status}" if raise_ex == true
                 end
             end
 
-            # write first / last chunk
-            unless chunk.empty?
-                build_async.log :debug,  ( chunk.join "" )
-            end
-    
-            exit_status = wait_thr.value
-            retval = exit_status.success?
-            unless exit_status.success?
-
-	        build_async.log :info, "command failed"
-                raise "command #{cmd} failed" if raise_ex == true
-            end
+            exit_status.success?
 
         end
-
-	    build_async.log :info, "command succeeded"
-        retval
-
-    end
-
-
+    
     def _create_distribution_archive cmp
         cmd = []
         cmd <<  "cd #{project.local_path}/#{build.local_path}/#{cmp.local_path}"
@@ -302,7 +292,6 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
 
         inc = []
         inc << path unless path.nil?
-        inc << "#{project.local_path}/#{build.local_path}/cpanlib/lib/perl5"
 
         if ! (settings.perl5lib.nil?) and ! (settings.perl5lib.empty?)
             settings.perl5lib.split(/\s+/).each do |p|
@@ -312,21 +301,6 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
         "export PERL5LIB=#{inc.join(':')}"
     end
 
-    def modulebuildrc
-        if project.verbose?
-            "export MODULEBUILDRC=#{settings.modulebuildrc} && "
-        else
-            ''
-        end
-    end
-
-    def cpanm_flags
-        if project.verbose?
-            '-o v'
-        else
-            ''
-        end
-    end
 end
 
 
