@@ -13,6 +13,7 @@ class BuildsController < ApplicationController
         @project = Project.find(params[:project_id])
         @build = @project.builds.create!
         FileUtils.mkdir_p "#{@project.local_path}/#{@build.local_path}"
+        @build.touch_log_file
 
         make_snapshot @project, @build
         @project.history.create!( { :commiter => current_user.username, :action => "run build ID: #{@build.id}" })

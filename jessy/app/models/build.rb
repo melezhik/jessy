@@ -1,3 +1,4 @@
+require 'fileutils'
 class Build < ActiveRecord::Base
 
     belongs_to :project
@@ -9,6 +10,10 @@ class Build < ActiveRecord::Base
 
     def log_path
         "#{project.local_path}/#{local_path}/log.txt"
+    end
+
+    def touch_log_file
+        FileUtils.touch log_path
     end
 
     def logger

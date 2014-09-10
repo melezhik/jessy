@@ -163,7 +163,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
 
 
         url_p = "http://melezhik.x:4000/stacks/#{project.id}-#{build.id}/authors/id/P/PI/PINTO/#{final_distribution_archive}"
-        orig_dir_p = final_distribution_archive.sub(".#{final_distribution_revision}-").sub('.tar.gz')
+        orig_dir_p = final_distribution_archive.sub(".#{final_distribution_revision}-",'').sub('.tar.gz','')
         resp = jcc.request :post, "/builds/#{jc_id}/artefact", 'url' => url_p, 'orig_dir' => orig_dir_p
 
         dist_name = resp.headers[:dist_name]
