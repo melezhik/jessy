@@ -71,7 +71,10 @@ The process of creation of distribution archive for an application. Schematicall
 
 ### Compile phase
 
-- when pinto phase is finished, every component's distribution achive is fetched from pinto repository and installed into local directory - __build install base__ - this is called __compile phase__.
+Compile phase is taken by jc service (jessy compiler), when pinto phase is done, jc service:
+
+- download every component's distribution achive from pinto repository ( via jessia api call )
+- installs a component into local directory - __build install base__
 
 ### Creating of artefacts
 
@@ -79,13 +82,13 @@ The process of creation of distribution archive for an application. Schematicall
 
 ## jessy build
 
-Build is the "snapshot" of application plus some build's data. 
+Jessy build holds  "snapshot" of application components  and some more technical data. 
 
-When the build starts project's components list is copied to build. The list of builds components is called __build configuration__.
+When the build process starts project components list is copied into build. The list of builds components is called __build configuration__.
 
 ### Build data
-The three type of things:
-- an __install base__ - local directory with all of the application dependencies.
+These are three type of things:
+- an __install base__ - local directory with all of the application dependencies, install base is stored on the side of jc service, which provides compilation facilities 
 - an 'attached' __pinto stack__, which represents all module's versions installed into build install base.
 - a __build state__ - the build state, on of the following: `schedulled|processing|succeeded|failed`. Succeeded build state means build process has finished successfully and build has a artefact.
 
