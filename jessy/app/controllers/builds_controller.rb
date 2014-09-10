@@ -273,7 +273,7 @@ class BuildsController < ApplicationController
     def download
          @build = Build.find(params[:id])
          @project = Project.find(params[:project_id])
-         redirect_to "http://pinto.webdev.x:3001/artefacts/#{params[:archive]}"
+         redirect_to "#{@project.jc_host}/artefacts/#{params[:archive]}"
     end
 
 private

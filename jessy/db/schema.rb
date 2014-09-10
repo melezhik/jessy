@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903082955) do
+ActiveRecord::Schema.define(version: 20140910113417) do
 
   create_table "builds", force: true do |t|
     t.string   "state",             default: "scheduled"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20140903082955) do
     t.boolean  "notify",                 default: true
     t.text     "recipients"
     t.boolean  "verbose",                default: false
+    t.string   "jc_host"
   end
 
   create_table "settings", force: true do |t|
