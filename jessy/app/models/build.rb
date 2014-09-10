@@ -82,7 +82,7 @@ class Build < ActiveRecord::Base
     end
 
     def ancestor
-         Build.limit(1).order( id: :desc ).where(' project_id = ? AND id < ? AND has_stack = ?  AND has_install_base = ? ', project_id, id, true, true ).first
+        Build.limit(1).order( id: :desc ).where(' project_id = ? AND id < ? AND has_stack = ?  AND has_install_base = ? ', project_id, id, true, true ).first
     end
 
     def precedent
@@ -90,7 +90,7 @@ class Build < ActiveRecord::Base
     end
 
     def has_parent?
-        parent_id.nil? == false
+        parent_id
     end
 
     def has_ancestor?

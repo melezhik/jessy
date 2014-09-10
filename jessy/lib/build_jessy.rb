@@ -10,7 +10,8 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
          build_async.log :debug,  "settings.force_mode: #{settings[:force_mode]}"
          build_async.log :debug,  "settings.pinto_repo_root: #{settings.pinto_repo_root}"
          build_async.log :debug,  "settings.skip_missing_prerequisites: #{settings.skip_missing_prerequisites || 'not set'}"
-         build_async.log :debug,  "build ancestor: #{build.has_ancestor? ? build.ancestor.id : 'not set'}"
+         build_async.log :debug,  "build has parent? #{build.has_parent? ? build.parent_id : 'no'}"
+         build_async.log :debug,  "build has ancestor? #{build.has_ancestor? ? build.ancestor.id : 'no'}"
          build_async.log :debug,  "project.jc_host: #{project[:jc_host]}"
 
          _initialize
