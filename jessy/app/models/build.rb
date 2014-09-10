@@ -65,7 +65,7 @@ class Build < ActiveRecord::Base
          if s >= recent_log_entries_number
             a[recent_log_entries_number .. -1]
          else
-            a.reverse
+            a
          end   
     end
 

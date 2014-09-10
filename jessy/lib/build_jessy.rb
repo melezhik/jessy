@@ -23,6 +23,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
   
             distributions_list = []
             final_distribution_archive = nil
+            main_cmp_dir = nil
             final_distribution_revision = nil
             
             build_async.log :debug, "create jc build"
@@ -103,12 +104,14 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
                      if cmp.main?
                          final_distribution_archive = archive_name_with_revision
           		         final_distribution_revision = pinto_distro_rev
+                         main_cmp_dir = archive_name.sub('.tar.gz','')
+                         build_async.log :debug, "application main distribution directory : #{main_cmp_dir}"
                          build_async.log :debug, "application main distribution archive : #{final_distribution_archive}"
                          build_async.log :debug, "application main distribution revision : #{final_distribution_revision}"
                      else
                          new_distribution = distributions.new
                          new_distribution.update({ :revision => rev, :url => cmp.url, :distribution => archive_name_with_revision,  :indexed_url => cmp.indexed_url })
-                         new_distribution.save!
+                         new_distribution.save
                      end
     
                  end
@@ -118,8 +121,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
     
         end
 
-        # HELLO
-        build_async.log :debug, "schedulle targets install into jc service"
+        build_async.log :debug, "schedulle targets install into jc service, please wait for a while, take some tea or coffee ..."
         dlist = distributions_list.map { |i| "t[]=PINTO/#{i[:archive_name_with_revision]}"  }.join '&'
         resp = jcc.request :post, "/builds/#{jc_id}/install?#{dlist}", 'cpan_mirror' => "http://melezhik.x:4000/stacks/#{project.id}-#{build.id}"
 
@@ -163,8 +165,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
 
 
         url_p = "http://melezhik.x:4000/stacks/#{project.id}-#{build.id}/authors/id/P/PI/PINTO/#{final_distribution_archive}"
-        orig_dir_p = final_distribution_archive.sub(".#{final_distribution_revision}-",'').sub('.tar.gz','')
-        resp = jcc.request :post, "/builds/#{jc_id}/artefact", 'url' => url_p, 'orig_dir' => orig_dir_p
+        resp = jcc.request :post, "/builds/#{jc_id}/artefact", 'url' => url_p, 'orig_dir' => main_cmp_dir
 
         dist_name = resp.headers[:dist_name]
         build.update({ :distribution_name => dist_name })
@@ -179,7 +180,8 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
     
             build_async.log :info, "running command: #{cmd}"
     
-    
+            exit_status = nil
+
             Open3.popen3(cmd) do |stdin, stdout, stderr, wait_thr|
     
                 while line = stdout.gets("\n")
@@ -212,8 +214,19 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
         cmd <<  _set_perl5lib("#{ENV['HOME']}/lib/perl5")
 
         if File.exists? "#{project.local_path}/#{build.local_path}/#{cmp.local_path}/Build.PL"
-	        cmd <<  "perl Build.PL --quiet 1>/dev/null"
-            cmd <<  "./Build realclean && perl Build.PL --quiet 1>/dev/null"
+
+            if settings.verbose == true
+    	        cmd <<  "perl Build.PL --quiet 1>/dev/null"
+            else
+    	        cmd <<  "perl Build.PL --quiet 1>/dev/null 2>&1"
+            end
+
+            if settings.verbose == true
+                cmd <<  "./Build realclean && perl Build.PL --quiet 1>/dev/null"
+            else
+                cmd <<  "./Build realclean && perl Build.PL --quiet 1>/dev/null 2>&1"
+            end
+
             cmd <<  "./Build manifest --quiet 1>/dev/null"
             cmd <<  "./Build dist --quiet 1>/dev/null"
         else
