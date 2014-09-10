@@ -214,11 +214,15 @@ class BuildsController < ApplicationController
             if user_signed_in?
                 @project.history.create!( { :commiter => current_user.username, :action => "delete build ID: #{params[:id]}" })
                 flash[:notice] = "build ID:#{params[:id]} for project ID:#{params[:project_id]} has been successfully deleted"
-                redirect_to project_path(@project)
             else
                 @project.history.create!( { :action => "delete build ID: #{params[:id]}" })
-                render :nothing => true, :status => 200     
             end
+        end
+
+        if request.env["HTTP_REFERER"].nil?
+            render  :text => "build, ID: #{params[:id]} has been successfully destroyed\n"
+        else
+            redirect_to :back 
         end
 
     end

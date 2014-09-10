@@ -21,8 +21,8 @@ Eye.application app do
                 stop_command "./bin/delayed_job stop -i #{i}"
                 daemonize false
                 stdall "#{cwd}/log/dj.eye.log"
-                start_timeout 5.seconds
-                stop_timeout 5.seconds
+                start_timeout 15.seconds
+                stop_timeout 15.seconds
                 env 'RESTCLIENT_LOG' => "#{cwd}/log/rc.log"
                 env 'PINTO_REPOSITORY_ROOT' =>  ENV['HOME'] + '/.jessy/repo/'
             end
