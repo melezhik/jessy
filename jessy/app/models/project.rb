@@ -53,7 +53,7 @@ class Project < ActiveRecord::Base
     end
 
     def local_path
-        "#{ENV['HOME']}/.pjam/projects/#{id}"
+        "#{ENV['HOME']}/.jessy/projects/#{id}"
     end
 
 
