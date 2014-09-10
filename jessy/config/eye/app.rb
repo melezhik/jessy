@@ -21,8 +21,8 @@ Eye.application app do
                 stop_command "./bin/delayed_job stop -i #{i}"
                 daemonize false
                 stdall "#{cwd}/log/dj.eye.log"
-                start_timeout 30.seconds
-                stop_timeout 30.seconds
+                start_timeout 5.seconds
+                stop_timeout 5.seconds
                 env 'RESTCLIENT_LOG' => "#{cwd}/log/rc.log"
                 env 'PINTO_REPOSITORY_ROOT' =>  ENV['HOME'] + '/.jessy/repo/'
             end
@@ -35,8 +35,8 @@ Eye.application app do
         start_command "rails server -d -P #{cwd}/tmp/pids/server.pid -p #{port}"
         daemonize false
         stdall "#{cwd}/log/api.eye.log"
-        start_timeout 30.seconds
-        stop_timeout 30.seconds
+        start_timeout 5.seconds
+        stop_timeout 5.seconds
         env 'PINTO_HOME' => ENV['HOME'] + '/opt/local/pinto'
         env 'PINTO_REPOSITORY_ROOT' =>  ENV['HOME'] + '/.jessy/repo/'
     end

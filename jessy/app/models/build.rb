@@ -6,7 +6,26 @@ class Build < ActiveRecord::Base
     has_many :snapshots, :dependent => :destroy
 
 #    validates :comment, presence: true , length: { minimum: 10 }
-    
+
+    def log_path
+        "#{local_path}/log.txt"
+    end
+
+    def logger
+        if @logger 
+            @logger
+        else
+            f = File.open(log_path, 'a')
+            f.sync = true
+            @logger =  Logger.new f
+        end
+    end
+
+    def log level, line
+        logger.send( level, line )
+    end
+
+
     def local_path
         "builds/#{id}"
     end
@@ -37,11 +56,17 @@ class Build < ActiveRecord::Base
 
 
     def recent_log_entries
-         logs.order( :id => :desc ).limit(recent_log_entries_number).reverse
+         a = File.readlines(log_path)
+         s = a.size
+         if s >= recent_log_entries_number
+            a[recent_log_entries_number .. -1].reverse
+         else
+            a.reverse
+         end   
     end
 
     def all_log_entries
-         logs.order( :id => :asc )
+        File.readlines(log_path).reverse
     end
 
     def recent_log_entries_number
@@ -87,5 +112,6 @@ class Build < ActiveRecord::Base
     def has_install_base?
         has_install_base
     end
+
 end
 

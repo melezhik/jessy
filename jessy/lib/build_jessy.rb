@@ -162,11 +162,9 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
         end
 
 
-        resp = jcc.request( 
-            :post, "/builds/#{jc_id}/artefact", 
-            'url' => "http://melezhik.x:4000/stacks/#{project.id}-#{build.id}/authors/id/P/PI/PINTO/#{final_distribution_archive}",
-            'orig_dir' => "#{final_distribution_archive.sub(('.' + final_distribution_revision + '-')).sub('.tar.gz')}"
-        )
+        url_p = "http://melezhik.x:4000/stacks/#{project.id}-#{build.id}/authors/id/P/PI/PINTO/#{final_distribution_archive}"
+        orig_dir_p = final_distribution_archive.sub(('.' + final_distribution_revision + '-')).sub('.tar.gz')
+        resp = jcc.request :post, "/builds/#{jc_id}/artefact", 'url' => url_p, 'orig_dir' => orig_dir_p
 
         dist_name = resp.headers[:dist_name]
         build.update({ :distribution_name => dist_name })
@@ -261,7 +259,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
 
     def _initialize
 
-         FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/cpanlib/"
+         FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}"
          FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/artefacts"
 
          build_async.log :info,  "project's local path has been successfully created: #{project.local_path}"

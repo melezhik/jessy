@@ -43,21 +43,8 @@ class BuildAsync < Struct.new( :project, :build, :distributions, :settings, :env
         return 1
     end
 
-    def log level, chunk 
-
-        if chunk.class == Array
-            lines  =  chunk.join "\n";
-        else
-            lines =  chunk
-        end
-
-        lines.chomp!
-
-        log_entry = build.logs.create
-        log_entry.update( { :level => level, :chunk => lines || "" } )
-        log_entry.save!
-        build.save!
-
+    def log level, line 
+        build.log level, line
     end
 
     def mark_build_as_in_processing
