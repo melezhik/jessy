@@ -11,14 +11,15 @@ find ~/.jc/builds/ -name cpanlib | wc -l
 должны выдать одинаковое кол-во файлов
 
 
-# патч базы 
-mysql -h mysql3.adriver.x -upinto -ppinto pinto -sNe 'alter table builds add column has_install_base tinyint(1)'
-mysql -h mysql3.adriver.x -upinto -ppinto pinto -sNe  'update builds set has_install_base = 1 where has_stack  = 1'
-
 # apply db:migrate
 -rw-rw-r-- 1 melezhik melezhik  130 сент.  3 12:29 20140903082955_add_has_inst_base_to_builds.rb
 -rw-rw-r-- 1 melezhik melezhik  115 сент. 10 15:34 20140910113417_add_jc_to_projects.rb
 -rw-rw-r-- 1 melezhik melezhik  112 сент. 11 15:06 20140911110603_add_jc_id_to_builds.rb
+
+# патч базы 
+mysql -h mysql3.adriver.x -upinto -ppinto pinto -sNe  'update builds set has_install_base = 1 where has_stack  = 1'
+mysql -h mysql3.adriver.x -upinto -ppinto pinto -sNe  'update projects set jc_jost = "....."'
+
 
 
 # convert logs to files
