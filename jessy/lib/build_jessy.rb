@@ -141,6 +141,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
                          resp = jcc.request :get, "/builds/#{jc_id}/target_state?name=PINTO/#{i[:archive_name_with_revision]}"
                          if resp.headers[:target_state] == 'ok'
                              processed_cnt += 1
+                              build_async.log :debug "#{i[:archive_name_with_revision]} ... OK"
                              i[:cmp].update!({ :revision => i[:revision] })    
                              i[:cmp].save!
                          elsif resp.headers[:target_state] == 'fail'
