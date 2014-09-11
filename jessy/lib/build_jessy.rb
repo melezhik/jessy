@@ -130,23 +130,26 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
         dlist = distributions_list.map { |i| "t[]=PINTO/#{i[:archive_name_with_revision]}"  }.join '&'
         resp = jcc.request :post, "/builds/#{jc_id}/install?#{dlist}", 'cpan_mirror' => "http://melezhik.x:4000/stacks/#{project.id}-#{build.id}"
 
-        processed_cnt = 0; failed_cnt = 0; ts = 600
+        processed_cnt = 0; failed_cnt = 0; ts = 600; seen = Hash.new
 
         begin
             status = Timeout::timeout(ts) {
                 while processed_cnt != distributions_list.size
-                    distributions_list.each do |i|
+                    distributions_list.reject{|i| seen.has_key? i[:archive_name_with_revision] }.each do |i|
                          #resp = jcc.request :get, "/builds/#{jc_id}/short_log"
                          #build_async.log :debug, "#{resp}" 
                          resp = jcc.request :get, "/builds/#{jc_id}/target_state?name=PINTO/#{i[:archive_name_with_revision]}"
                          if resp.headers[:target_state] == 'ok'
-                             processed_cnt += 1
-                              build_async.log :debug "#{i[:archive_name_with_revision]} ... OK"
-                             i[:cmp].update!({ :revision => i[:revision] })    
-                             i[:cmp].save!
+                            processed_cnt += 1
+                            build_async.log :debug, "#{i[:archive_name_with_revision]} ... #{resp.headers[:target_state]}"
+                            seen[i[:archive_name_with_revision]] = 1
+                            i[:cmp].update!({ :revision => i[:revision] })    
+                            i[:cmp].save!
                          elsif resp.headers[:target_state] == 'fail'
-                             processed_cnt += 1
-                             failed_cnt += 1
+                            build_async.log :debug, "#{i[:archive_name_with_revision]} ... #{resp.headers[:target_state]}"
+                            seen[i[:archive_name_with_revision]] = 1
+                            processed_cnt += 1
+                            failed_cnt += 1
                          end
                     end
                 end
