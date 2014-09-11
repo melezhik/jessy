@@ -2,6 +2,9 @@
 <%= link_to 'Back To Project', project_path(@project) %> |
 <strong>Full Log </strong> |  
     <%= link_to "Recent Log", project_build_path(@project,@build), :title => "Last Entries #{@build.recent_log_entries_number}" %> |
+    <% if @build.jc_id %>
+    <%= link_to "Compile Log", jc_log_project_build_path(@project,@build), :title => 'Show comoile log from jc service' %> |
+    <% end %>
     <%= link_to 'Distributions List', list_project_build_path(@project,@build), :title => 'list of distributions archives' %> |
     <%= link_to 'Configuration', configuration_project_build_path(@project,@build), :title => 'show build configuration' %> |
     <%= link_to 'Changes', changes_project_build_path(@project,@build), :title => 'changes for this build' %>

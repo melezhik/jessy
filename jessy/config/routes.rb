@@ -32,6 +32,7 @@ Ui::Application.routes.draw do
                 get     'changes'
                 get     'list'
                 get     'full_log'
+                get     'jc_log'
                 get     'configuration'
                 get     'artefacts/*archive/', to: 'builds#download'
                 post    'lock'

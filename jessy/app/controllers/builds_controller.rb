@@ -87,16 +87,14 @@ class BuildsController < ApplicationController
             @build.update  :has_stack => true, :state => 'succeeded', :distribution_name => parent_build[:distribution_name]
             @build.save!
 
-            jcc = JCC.new @project.jc_host
-
             @build.log :debug, "create jc build"
 
-            resp = jcc.request :post, '/builds',  'build[key_id]' => "#{@build.id}" 
+            resp = @project.jcc.request :post, '/builds',  'build[key_id]' => "#{@build.id}" 
             jc_id = resp.headers[:build_id]
             @build.log :debug, "create jc build ok. js_id:#{jc_id}"
 
             @build.log :debug, "copy ancestor build via jc server, ancestor build_id: #{parent_build.id}"
-            resp = jcc.request :post, "/builds/#{jc_id}/copy", 'key_id' => "#{parent_build.id}"
+            resp = @project.jcc.request :post, "/builds/#{jc_id}/copy", 'key_id' => "#{parent_build.id}"
             @build.log :debug, "copy jc build ok"
 
             @build.update!  :has_install_base => true 
@@ -280,6 +278,14 @@ class BuildsController < ApplicationController
          @build = Build.find(params[:id])
          @project = Project.find(params[:project_id])
          redirect_to "#{@project.jc_host}/artefacts/#{params[:archive]}"
+    end
+
+
+    def jc_log
+         @build = Build.find(params[:id])
+         @project = Project.find(params[:project_id])
+         res = @project.jcc.request :get, "/builds/#{@build[:jc_id]}"
+         @data = "#{res}"
     end
 
 private

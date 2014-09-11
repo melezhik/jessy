@@ -33,7 +33,10 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
             resp = jcc.request :post, '/builds',  'build[key_id]' => "#{build.id}" 
             jc_id = resp.headers[:build_id]
             build_async.log :debug, "create jc build ok. jc_id:#{jc_id}"
-             
+
+            build.update!({ :jc_id => jc_id })
+            build.save!
+         
             if build.has_ancestor?
                 build_async.log :debug, "copy ancestor build via jc server, ancestor build_id: #{build.ancestor.id}"
                 resp = jcc.request :post, "/builds/#{jc_id}/copy", 'key_id' => "#{build.ancestor.id}"
@@ -131,7 +134,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
 
         begin
             status = Timeout::timeout(ts) {
-                while processed_cnt < distributions_list.size
+                while processed_cnt != distributions_list.size
                     distributions_list.each do |i|
                          #resp = jcc.request :get, "/builds/#{jc_id}/short_log"
                          #build_async.log :debug, "#{resp}" 

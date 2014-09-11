@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140910113417) do
+ActiveRecord::Schema.define(version: 20140911110603) do
 
   create_table "builds", force: true do |t|
     t.string   "state",             default: "scheduled"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140910113417) do
     t.boolean  "has_stack",         default: false
     t.integer  "parent_id"
     t.boolean  "has_install_base"
+    t.integer  "jc_id"
   end
 
   add_index "builds", ["project_id"], name: "index_builds_on_project_id", using: :btree

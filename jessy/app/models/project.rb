@@ -6,6 +6,10 @@ class Project < ActiveRecord::Base
 
     validates :title, presence: true , length: { minimum: 2 }
 
+    def jcc
+        @jcc ||= JCC.new jc_host
+    end
+
     def sources_ordered
         sources.sort { |x, y| ( y[:sn] <=> x[:sn] ) || (y[:id] <=> x[:id])  }
     end
