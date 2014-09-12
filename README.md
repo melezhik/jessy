@@ -28,11 +28,21 @@ Jessy is the pinto based build server for perl applications.
 - nodejs
 - libmysql 
 
-# Pinto repository root directory
+# Configuration
 
-Will be created in $HOME/.jessy/repo directory. To migrate existed one simply run following:
+## Pinto repository root directory
+
+### create pinto repository
+
+    pinto --root=$HOME/.jessy/repo  init 
+
+If you already have a pinto repository, copy it by running this command:
 
     mkdir -p  $HOME/.jessy/repo/ && cp -r /path/to/existed/repo/root  $HOME/.jessy/repo
+
+### add symlink to pinto repository at public folder
+
+    cd $app_home/public && ln -s $HOME/.jessy/repo/ repo
 
 # Gory details
 

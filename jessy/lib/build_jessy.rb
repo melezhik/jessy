@@ -128,7 +128,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
 
         build_async.log :debug, "schedulle targets install into jc service, please wait for a while, take some tea or coffee ..."
         dlist = distributions_list.map { |i| "t[]=PINTO/#{i[:archive_name_with_revision]}"  }.join '&'
-        resp = jcc.request :post, "/builds/#{jc_id}/install?#{dlist}", 'cpan_mirror' => "http://melezhik.x:4000/stacks/#{project.id}-#{build.id}"
+        resp = jcc.request :post, "/builds/#{jc_id}/install?#{dlist}", 'cpan_mirror' => "#{env[:root_url]}/repo/stacks/#{project.id}-#{build.id}"
 
         processed_cnt = 0; failed_cnt = 0; ts = 600; seen = Hash.new
 
@@ -173,7 +173,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
         end
 
 
-        url_p = "http://melezhik.x:4000/stacks/#{project.id}-#{build.id}/authors/id/P/PI/PINTO/#{final_distribution_archive}"
+        url_p = "#{env[:root_url]}/repo/stacks/#{project.id}-#{build.id}/authors/id/P/PI/PINTO/#{final_distribution_archive}"
         resp = jcc.request :post, "/builds/#{jc_id}/artefact", 'url' => url_p, 'orig_dir' => main_cmp_dir
 
         dist_name = resp.headers[:dist_name]
@@ -276,12 +276,6 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
 
          build_async.log :info,  "project's local path has been successfully created: #{project.local_path}"
          build_async.log :info,  "build's local path has been successfully created: #{project.local_path}/#{build.local_path}"
-
-         unless File.exist? "#{settings.pinto_repo_root}/.pinto"
-             FileUtils.mkdir_p "#{settings.pinto_repo_root}"
-             _execute_command "pinto --root=#{settings.pinto_repo_root} init"
-             build_async.log :debug, "pinto repository has been successfully created with root at: #{settings.pinto_repo_root}"
-         end
 
          if build.has_ancestor?
              build_async.log :info, "using ancestor's stack for this build - #{_ancestor_stack}"
