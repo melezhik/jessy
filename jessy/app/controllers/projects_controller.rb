@@ -73,7 +73,7 @@ private
 
   def project_params
       params.require(:project).permit( 
-            :title, :text, 
+            :title, :text, :jc_host,
             :distribution_source_id,
             :notify, :verbose, 
             :recipients
