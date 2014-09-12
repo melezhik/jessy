@@ -18,7 +18,7 @@ class Ability
          can [:create], [Build]
          can [:build_status], [Project]
        else
-         can :read, :all
+         #can :read, :all
        end
     #
     # The first argument to `can` is the action you are giving the user 

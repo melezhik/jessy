@@ -14,7 +14,7 @@
     </header>
     <main role="main">
     <% if user_signed_in? %>
-    <p class="breadcrumb">logged as <strong><%= current_user.username %></strong></p>
+    <p class="breadcrumb">logged as <strong><%= current_user.username %></strong> [ roles mask: <%= current_user.roles_mask %>]</p>
     <% end %>
        <%= render 'layouts/messages' %>
        <%= yield %>

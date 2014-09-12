@@ -16,6 +16,7 @@ class SettingsController < ApplicationController
     end
 
     def create
+
         @settings = Setting.new settings_params 
         if @settings.save
             @settings.update_pinto_config
@@ -28,9 +29,10 @@ class SettingsController < ApplicationController
     end
 
     def update 
+
         @settings = Setting.take
-	params = settings_params
-	params.delete :jabber_password if params[:jabber_password].nil? or params[:jabber_password].empty?
+    	params = settings_params
+	    params.delete :jabber_password if params[:jabber_password].nil? or params[:jabber_password].empty?
 
         if @settings.update(params)
             @settings.update_pinto_config
