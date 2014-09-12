@@ -54,12 +54,13 @@ class ProjectsController < ApplicationController
     def destroy 
         @project = Project.find(params[:id])
 
-        #@project.destroy
-        #flash[:notice] = "project ID:#{@project.id} has been successfully removed"
-        #redirect_to controller: "projects"
-
-        flash[:alert] = "`destroy project' feature is temporary disabled"
-        redirect_to controller: "projects"
+        if @project.has_builds?
+            flash[:warn] = "project ID:#{@project.id} has builds, remove all projects builds first"
+        else
+            @project.destroy
+            flash[:notice] = "project ID:#{@project.id} has been successfully removed"
+        end
+        redirect_to controller: 'projects'
 
     end
 

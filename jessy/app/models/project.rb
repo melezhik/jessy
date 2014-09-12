@@ -22,6 +22,11 @@ class Project < ActiveRecord::Base
         builds.last
     end
 
+    def has_builds?
+        builds.size > 0
+    end
+
+
     def last_successfull_build
         builds.select {|b| b.state == 'succeeded' and ! b.distribution_name.nil?  }.last
     end
