@@ -6,10 +6,11 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
 
     def run
 
-         build_async.log :debug,  "settings.verbose: #{project[:verbose]}"
+         build_async.log :debug,  "project.verbose: #{project[:verbose]}"
          build_async.log :debug,  "settings.force_mode: #{settings[:force_mode]}"
          build_async.log :debug,  "settings.pinto_repo_root: #{settings.pinto_repo_root}"
          build_async.log :debug,  "settings.skip_missing_prerequisites: #{settings.skip_missing_prerequisites || 'not set'}"
+         build_async.log :debug,  "settings.jc_timeout: #{settings.jc_timeout}"
          build_async.log :debug,  "build has parent? #{build.has_parent? ? build.parent_id : 'no'}"
          build_async.log :debug,  "build has ancestor? #{build.has_ancestor? ? build.ancestor.id : 'no'}"
          build_async.log :debug,  "project.jc_host: #{project[:jc_host]}"
@@ -130,7 +131,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
         dlist = distributions_list.map { |i| "t[]=PINTO/#{i[:archive_name_with_revision]}"  }.join '&'
         resp = jcc.request :post, "/builds/#{jc_id}/install?#{dlist}", 'cpan_mirror' => "#{env[:root_url]}/repo/stacks/#{project.id}-#{build.id}"
 
-        processed_cnt = 0; failed_cnt = 0; ts = 600; seen = Hash.new
+        processed_cnt = 0; failed_cnt = 0; ts = settings.jc_timeout; seen = Hash.new
 
         begin
             status = Timeout::timeout(ts) {
@@ -145,7 +146,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
                             seen[i[:archive_name_with_revision]] = 1
                             i[:cmp].update!({ :revision => i[:revision] })    
                             i[:cmp].save!
-                         elsif resp.headers[:target_state] == 'fail'
+                         elsif resp.headers[:target_state] == 'failed'
                             build_async.log :debug, "#{i[:archive_name_with_revision]} ... #{resp.headers[:target_state]}"
                             seen[i[:archive_name_with_revision]] = 1
                             processed_cnt += 1

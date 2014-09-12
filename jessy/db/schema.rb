@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140911110603) do
+ActiveRecord::Schema.define(version: 20140912104233) do
 
   create_table "builds", force: true do |t|
     t.string   "state",             default: "scheduled"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20140911110603) do
     t.string   "jabber_login"
     t.string   "jabber_password"
     t.string   "jabber_host"
+    t.integer  "jc_timeout",                    default: 3600
   end
 
   create_table "snapshots", force: true do |t|

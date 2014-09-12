@@ -26,7 +26,15 @@ class Build < ActiveRecord::Base
     end
 
     def log level, line
-        logger.send( level, line.chomp )
+        if line.is_a? Array 
+            line.split("\n").each do |l|
+                logger.send( level, l.chomp )
+            end
+        elsif line.is_a? String
+            logger.send( level, line.chomp )
+        else
+            raise "usage log(line) where line is_a Array|String"
+        end
     end
 
 

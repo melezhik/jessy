@@ -24,6 +24,10 @@
     <%= f.text_field :pinto_downsteram_repositories, :size => "100" %>
   </p>
   <p>
+    <%= f.label :jc_timeout %><br>
+    <%= f.text_field :jc_timeout, :size => "100" %>
+  </p>
+  <p>
      <%= f.check_box :force_mode, { :value => true , :checked => @settings[:force_mode] } %>
      <%= f.label(:force_mode, "forcefully reinstall sources, even no changes in SCM found") %>
   </p>

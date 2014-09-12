@@ -8,11 +8,16 @@ end
 
 Eye.application app do
 
+  stop_on_delete true 
+
   working_dir cwd
   stdall "#{cwd}/log/trash.log" # stdout,err logs for processes by default
 
     group 'dj' do
 
+        chain :action => :restart, :grace => 5.seconds
+        chain :action => :start, :grace => 0.2.seconds
+    
         workers = (ENV['dj_workers']||'2').to_i
         (1..workers).each do |i|
             process "dj#{i}" do
@@ -21,8 +26,8 @@ Eye.application app do
                 stop_command "./bin/delayed_job stop -i #{i}"
                 daemonize false
                 stdall "#{cwd}/log/dj.eye.log"
-                start_timeout 15.seconds
-                stop_timeout 15.seconds
+                #start_timeout 30.seconds
+                #stop_timeout 30.seconds
                 env 'RESTCLIENT_LOG' => "#{cwd}/log/rc.log"
                 env 'PINTO_REPOSITORY_ROOT' =>  ENV['HOME'] + '/.jessy/repo/'
             end
