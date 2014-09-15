@@ -26,7 +26,7 @@ mysql -hsql3.webdev.x -pjc -ujc jc -sN | perl -n -e '($bid,$pid,$id) = split; pr
 
 ## проверка
 find  /home/pinto/.pjam/projects/ -maxdepth 2 -mindepth 2  -name builds -exec find  {} -maxdepth 2  -name cpanlib \; | wc -l
-find ~/.jc/builds/ -name cpanlib | wc -l
+find ~/.jc/builds/  -maxdepth 2 -mindepth 2 -name cpanlib | wc -l
 
  ( должны выдать одинаковое кол-во файлов )
 
@@ -61,7 +61,7 @@ mysql -h sql3.webdev.x -ujessy -pjessy jessy  < pinto.sql
 rake db:migrate
 mysql -h sql3.webdev.x -ujessy -pjessy jessy -sNe  'drop table logs'
 mysql -h sql3.webdev.x -ujessy -pjessy jessy -sNe  'update builds set has_install_base = 1 where has_stack  = 1'
-mysql -h sql3.webdev.x -upinto -pjessy jessy -sNe  'update projects set jc_jost = "http://pinto.webdev.x:3001"'
+mysql -h sql3.webdev.x -ujessy -pjessy jessy -sNe  'update projects set jc_host = "http://pinto.webdev.x:3001"'
 
 eye start jessy
 
