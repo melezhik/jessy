@@ -1,8 +1,18 @@
 # JC
 
 ## creates jc build objects
-mysql -h sql3.webdev.x -upinto -ppinto pinto -sNe 'select id from builds where has_stack is true order by id asc' | \
+
+eye stop jc
+mkdir ~/.jc/builds
+rm -rf ~/.jc/builds/*
+mkdir ~/.jc/artefacts
+rm -rf ~/.jc/artefacts/*
+
+eye start api
+mysql -h sql3.webdev.x -ujc -pjc jc -sNe 'delete from builds'
+mysql -h mysql3.adriver.x -upinto -ppinto pinto -sNe 'select id from builds where has_stack is true order by id asc' | \
 perl -n  -e 'chomp; print "curl --no-proxy 127.0.0.1:3001 -X POST  -d 'build[key_id]=\$_' http://pinto.webdev.x:3001/builds\n"' | bash
+
 
 ## copies cpanlibs into jc server 
 find  /home/pinto/.pjam/projects/ -maxdepth 2 -mindepth 2  -name builds -exec find  {} -maxdepth 2  -name cpanlib \; | \
