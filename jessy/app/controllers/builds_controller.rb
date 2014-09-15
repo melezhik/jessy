@@ -210,10 +210,12 @@ class BuildsController < ApplicationController
 
         `pinto --root=#{Setting.take.pinto_repo_root} kill #{@project.id}-#{build.id}`
 
+        jc_id = nil
         if build.locked? or  build.released?
             flash[:alert] = "cannot delete locked  or released build! ID:#{params[:id]}"
         else
             FileUtils.rm_rf "#{@project.local_path}/#{build.local_path}"
+            jc_id = build.jc_id
             build.destroy
             if user_signed_in?
                 @project.history.create!( { :commiter => current_user.username, :action => "delete build ID: #{params[:id]}" })
@@ -221,6 +223,11 @@ class BuildsController < ApplicationController
             else
                 @project.history.create!( { :action => "delete build ID: #{params[:id]}" })
             end
+        end
+
+        if jc_id
+            @project.history.create!( { :action => "delete jc build, build ID: #{params[:id]}, jc ID: #{jc_id}" })            
+            @project.jcc.request :delete, "/builds/#{jc_id}"
         end
 
         if request.env["HTTP_REFERER"].nil?
