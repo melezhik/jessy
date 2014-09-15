@@ -2,19 +2,24 @@
 
 ## creates jc build objects
 
+ssh pinto.webdev.x
+
 eye stop jc
 mkdir ~/.jc/builds
 rm -rf ~/.jc/builds/*
 mkdir ~/.jc/artefacts
 rm -rf ~/.jc/artefacts/*
 
-eye start api
+eye start jc
 mysql -h sql3.webdev.x -ujc -pjc jc -sNe 'delete from builds'
 mysql -h mysql3.adriver.x -upinto -ppinto pinto -sNe 'select id from builds where has_stack is true order by id asc' | \
 perl -n  -e 'chomp; print "curl --no-proxy 127.0.0.1:3001 -X POST  -d 'build[key_id]=\$_' http://pinto.webdev.x:3001/builds\n"' | bash
 
 
 ## copies cpanlibs into jc server 
+
+ssh pinto.webdev.x
+
 find  /home/pinto/.pjam/projects/ -maxdepth 2 -mindepth 2  -name builds -exec find  {} -maxdepth 2  -name cpanlib \; | \
 perl -n -e '@a = split "/"; print "select $a[-2], $a[-4], id from builds where key_id =  $a[-2] ; \n"'  | \
 mysql -hsql3.webdev.x -pjc -ujc jc -sN | perl -n -e '($bid,$pid,$id) = split; print "cp -r /home/pinto/.pjam/projects/$pid/builds/$bid/cpanlib  ~/.jc/builds/$id/ \n"' | bash
@@ -28,14 +33,39 @@ find ~/.jc/builds/ -name cpanlib | wc -l
 # инициализация базы базы 
 
 
-## JESSY
+# JESSY
+
+## copy pinto repo into new location
+
+ssh pinto.webdev.x
+
+tar -zcf  pinto.tar.gz /home/pinto/.pjam/repo/
+scp  pinto.tar.gz melezhik.x:/tmp/
+rm pinto.tar.gz
+
+## create database
+
+ssh melezhik.x
+eye stop jessy
+
+tar -xzf /tmp/pinto.tar.gz
+mkdir -p ~/.jessy/
+rm -rf ~/.jessy/*
+cp -r /tmp/home/pinto/.pjam/ ~/.jessy/
+rm -rf   /tmp/pinto.tar.gz /tmp/home/pinto/.pjam/repo/
+
 mysqldump -h mysql3.adriver.x -upinto -ppinto pinto  > pinto.sql
 mysql -h sql3.webdev.x -ujessy -pjessy jessy  < pinto.sql
+
+
 rake db:migrate
 mysql -h sql3.webdev.x -ujessy -pjessy jessy -sNe  'drop table logs'
 mysql -h sql3.webdev.x -ujessy -pjessy jessy -sNe  'update builds set has_install_base = 1 where has_stack  = 1'
 mysql -h sql3.webdev.x -upinto -pjessy jessy -sNe  'update projects set jc_jost = "http://pinto.webdev.x:3001"'
 
-# convert logs to files
+eye start jessy
+
+## convert logs to files
+todo
 
 
