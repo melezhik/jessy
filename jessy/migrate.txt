@@ -51,7 +51,7 @@ eye stop jessy
 tar -xzf /tmp/pinto.tar.gz
 mkdir -p ~/.jessy/
 rm -rf ~/.jessy/*
-cp -r /tmp/home/pinto/.pjam/ ~/.jessy/
+cp -r /tmp/home/pinto/.pjam/repo ~/.jessy/
 rm -rf   /tmp/pinto.tar.gz /tmp/home/pinto/.pjam/repo/
 
 mysqldump -h mysql3.adriver.x -upinto -ppinto pinto  > pinto.sql
