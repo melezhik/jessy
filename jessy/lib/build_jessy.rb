@@ -7,7 +7,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
     def run
 
          build_async.log :debug,  "project.verbose: #{project[:verbose]}"
-         build_async.log :debug,  "settings.force_mode: #{settings[:force_mode]}"
+         build_async.log :debug,  "project.force_mode: #{project[:force_mode]}"
          build_async.log :debug,  "settings.pinto_repo_root: #{settings.pinto_repo_root}"
          build_async.log :debug,  "settings.skip_missing_prerequisites: #{settings.skip_missing_prerequisites || 'not set'}"
          build_async.log :debug,  "settings.jc_timeout: #{settings.jc_timeout}"
@@ -76,8 +76,8 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
 
                  build_async.log :debug,  "last revision extracted from repoisitory: #{rev}"
                     
-                 if (! cmp.revision.nil? and ! rev.nil?  and ! cmp.main? and cmp.revision == rev  and settings.force_mode == false )
-    	 	        build_async.log :debug, "this component is already installed at revision: #{rev}, skip ( enable settings.force_mode to change this )"
+                 if (! cmp.revision.nil? and ! rev.nil?  and ! cmp.main? and cmp.revision == rev  and project.force_mode == false )
+    	 	        build_async.log :debug, "this component is already installed at revision: #{rev}, skip ( enable project.force_mode to change this )"
 	    	        next
     	         end
     

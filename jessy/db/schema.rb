@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140912104233) do
+ActiveRecord::Schema.define(version: 20140916084916) do
 
   create_table "builds", force: true do |t|
     t.string   "state",             default: "scheduled"
@@ -65,16 +65,6 @@ ActiveRecord::Schema.define(version: 20140912104233) do
 
   add_index "histories", ["project_id"], name: "index_histories_on_project_id", using: :btree
 
-  create_table "logs", force: true do |t|
-    t.binary   "chunk"
-    t.integer  "build_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "level"
-  end
-
-  add_index "logs", ["build_id"], name: "index_logs_on_build_id", using: :btree
-
   create_table "projects", force: true do |t|
     t.string   "title"
     t.text     "text"
@@ -85,6 +75,7 @@ ActiveRecord::Schema.define(version: 20140912104233) do
     t.text     "recipients"
     t.boolean  "verbose",                default: false
     t.string   "jc_host"
+    t.boolean  "force_mode"
   end
 
   create_table "settings", force: true do |t|
@@ -93,7 +84,6 @@ ActiveRecord::Schema.define(version: 20140912104233) do
     t.text     "pinto_downsteram_repositories"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "force_mode",                    default: false
     t.string   "jabber_login"
     t.string   "jabber_password"
     t.string   "jabber_host"

@@ -77,7 +77,7 @@ private
       params.require(:project).permit( 
             :title, :text, :jc_host,
             :distribution_source_id,
-            :notify, :verbose, 
+            :notify, :verbose, :force_mode,
             :recipients
      )
   end
