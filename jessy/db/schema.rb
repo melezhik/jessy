@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20140916084916) do
     t.text     "recipients"
     t.boolean  "verbose",                default: false
     t.string   "jc_host"
-    t.boolean  "force_mode"
+    t.boolean  "force_mode",             default: false
   end
 
   create_table "settings", force: true do |t|
