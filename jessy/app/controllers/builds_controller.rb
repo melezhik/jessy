@@ -6,7 +6,7 @@ require 'open3'
 class BuildsController < ApplicationController
 
 
-    skip_before_filter :authenticate_user!, :only => [ :destroy, :download ]
+    skip_before_filter :authenticate_user!, :only => [ :destroy, :download, :revert ]
 
     def create
 
@@ -32,7 +32,13 @@ class BuildsController < ApplicationController
         parent_project =  Project.find(parent_build.project_id)
 
 
-        @project.history.create!( { :commiter => current_user.username, :action => "revert project to build ID: #{parent_build.id}" } )
+        if current_user.nil?
+            comm = 'anonumous'
+        else
+            comm = current_user.username
+        end
+
+        @project.history.create!  :commiter => comm, :action => "revert project to build ID: #{parent_build.id}" 
 
         if parent_build.succeeded?
 
@@ -88,7 +94,7 @@ class BuildsController < ApplicationController
             @build.save!
 
             if params[:no_copy_install_base]
-                @build.log :debug, "do not copy install base due to param[:no_copy_install_base] is set to <#{param[:no_copy_install_base]}>"
+                @build.log :debug, "do not copy install base due to param[:no_copy_install_base] is set to <#{params[:no_copy_install_base]}>"
                 flash[:notice] = "build ID: #{@build.id} for project ID: #{params[:project_id]} has been successfully reverted; parent build ID: #{@build.parent_id}"
             else
                 @build.log :debug, "create jc build"
@@ -115,7 +121,11 @@ class BuildsController < ApplicationController
             flash[:alert] = "cannot revert project to unsucceded build; parent build ID:#{parent_build.id}; state:#{parent_build.state}"
         end
 
-        redirect_to project_path(@project)
+        if request.env["HTTP_REFERER"].nil?
+            render  :text => "successfully reverted project to build ID: #{parent_build.id}; new build ID: #{@build.id}\n"
+        else
+            redirect_to @project
+        end
 
     end
 
