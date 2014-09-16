@@ -8,7 +8,7 @@ class Build < ActiveRecord::Base
 #    validates :comment, presence: true , length: { minimum: 10 }
 
     def log_path
-        "#{project.local_path}/#{local_path}/log.txt"
+        "#{local_path}/log.txt"
     end
 
     def touch_log_file
@@ -39,7 +39,7 @@ class Build < ActiveRecord::Base
 
 
     def local_path
-        "builds/#{id}"
+        "#{ENV['HOME']}/.jessy/builds/#{id}"
     end
 
     def components 

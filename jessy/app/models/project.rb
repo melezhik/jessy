@@ -61,11 +61,6 @@ class Project < ActiveRecord::Base
         end
     end
 
-    def local_path
-        "#{ENV['HOME']}/.jessy/projects/#{id}"
-    end
-
-
     def notify?
         notify == true
     end

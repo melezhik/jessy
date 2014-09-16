@@ -55,9 +55,9 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
 
                  build_async.log :info,  "processing component: #{cmp[:indexed_url]}"
     
-                 FileUtils.rm_rf "#{project.local_path}/#{build.local_path}/#{cmp.local_path}"
-                 FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/#{cmp.local_path}"
-                 build_async.log :debug,  "component's local path: #{project.local_path}/#{build.local_path}/#{cmp.local_path} has been successfully created"
+                 FileUtils.rm_rf "#{build.local_path}/#{cmp.local_path}"
+                 FileUtils.mkdir_p "#{build.local_path}/#{cmp.local_path}"
+                 build_async.log :debug,  "component's local path: #{build.local_path}/#{cmp.local_path} has been successfully created"
     
                  if build.has_ancestor? and record = build.ancestor.component_by_indexed_url(cmp[:indexed_url])
                         cmp.update!({ :revision => record[:revision] })
@@ -66,7 +66,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
                  end
         
                  # construct scm specific object for component 
-                 scm_handler = SCM::Factory.create cmp, "#{project.local_path}/#{build.local_path}/#{cmp.local_path}"
+                 scm_handler = SCM::Factory.create cmp, "#{build.local_path}/#{cmp.local_path}"
 
                  build_async.log :debug,  "component's scm hanlder class: #{scm_handler.class}"
 
@@ -219,11 +219,11 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
     
     def _create_distribution_archive cmp
         cmd = []
-        cmd <<  "cd #{project.local_path}/#{build.local_path}/#{cmp.local_path}"
+        cmd <<  "cd #{build.local_path}/#{cmp.local_path}"
         cmd <<  "rm -rf *.gz && rm -rf MANIFEST"
         cmd <<  _set_perl5lib("#{ENV['HOME']}/lib/perl5")
 
-        if File.exists? "#{project.local_path}/#{build.local_path}/#{cmp.local_path}/Build.PL"
+        if File.exists? "#{build.local_path}/#{cmp.local_path}/Build.PL"
 
             if project[:verbose] == true
     	        cmd <<  "perl Build.PL --quiet 1>/dev/null"
@@ -246,7 +246,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
             cmd <<  "make dist 1>/dev/null"
         end
         _execute_command(cmd.join(' && '))
-        distro_name = `cd #{project.local_path}/#{build.local_path}/#{cmp.local_path} && ls *.gz`.chomp!
+        distro_name = `cd #{build.local_path}/#{cmp.local_path} && ls *.gz`.chomp!
     end
 
     def _distribution_in_pinto_repo! archive_name_with_revision
@@ -262,7 +262,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
     def _add_distribution_to_pinto_repo cmp, archive_name, rev
         archive_name_with_revision = archive_name.sub('.tar.gz', ".#{rev}.tar.gz")
         cmd = []
-        cmd <<  "cd #{project.local_path}/#{build.local_path}/#{cmp.local_path}"
+        cmd <<  "cd #{build.local_path}/#{cmp.local_path}"
         cmd << "mv #{archive_name} #{archive_name_with_revision}"
         cmd <<  "export PINTO_LOCKFILE_TIMEOUT=10000 &&  pinto -r #{settings.pinto_repo_root} add -s #{_stack} #{settings.skip_missing_prerequisites_as_pinto_param} --author PINTO -v --use-default-message --no-color --recurse #{archive_name_with_revision}"
         _execute_command(cmd.join(' && '))
@@ -272,11 +272,9 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
 
     def _initialize
 
-         FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}"
-         FileUtils.mkdir_p "#{project.local_path}/#{build.local_path}/artefacts"
+         FileUtils.mkdir_p "#{build.local_path}/artefacts"
 
-         build_async.log :info,  "project's local path has been successfully created: #{project.local_path}"
-         build_async.log :info,  "build's local path has been successfully created: #{project.local_path}/#{build.local_path}"
+         build_async.log :info,  "build's local path has been successfully created: #{build.local_path}"
 
          if build.has_ancestor?
              build_async.log :info, "using ancestor's stack for this build - #{_ancestor_stack}"

@@ -13,7 +13,7 @@ class BuildsController < ApplicationController
         @project = Project.find(params[:project_id])
         @build = @project.builds.create!
         
-        FileUtils.mkdir_p "#{@project.local_path}/#{@build.local_path}"
+        FileUtils.mkdir_p @build.local_path
         @build.touch_log_file
 
         make_snapshot @project, @build
@@ -38,7 +38,7 @@ class BuildsController < ApplicationController
 
             @build = @project.builds.create!({ :parent_id => parent_build.id })
 
-            FileUtils.mkdir_p "#{@project.local_path}/#{@build.local_path}"
+            FileUtils.mkdir_p @build.local_path
             @build.touch_log_file
 
             @build.log :info, "create build ID:#{@build.id}"
@@ -214,7 +214,7 @@ class BuildsController < ApplicationController
         if build.locked? or  build.released?
             flash[:alert] = "cannot delete locked  or released build! ID:#{params[:id]}"
         else
-            FileUtils.rm_rf "#{@project.local_path}/#{build.local_path}"
+            FileUtils.rm_rf build.local_path
             jc_id = build.jc_id
             build.destroy
             if user_signed_in?
