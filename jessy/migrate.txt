@@ -70,10 +70,8 @@ eye start jessy
 ssh pinto.webdev.x
 
 mysql -hsql3.webdev.x -ujc -pjc jc -sNe 'select key_id, id from builds' | \
-perl -n -e '($key_id, $id) = split; print "mkdir -p  ~/.jessy/builds/$id/ && \
-mysql -hmysql3.adriver.x -upinto -ppinto pinto -sNe \"select chunk  from logs where build_id = $key_id order by id asc\"  > ~/.jessy/builds/$id/log.txt \n "'  | bash
-
-
+perl -n -e '($key_id, $id) = split; print "mkdir -p  ~/.jessy/builds/$key_id/ && \
+mysql -hmysql3.adriver.x -upinto -ppinto pinto -sNe \"select chunk  from logs where build_id = $key_id order by id asc\"  > ~/.jessy/builds/$key_id/log.txt \n "'
 scp -r  ~/.jessy/builds melezhik.x:~/.jessy/
 rm -rf ~/.jessy
 
