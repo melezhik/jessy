@@ -136,6 +136,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
         begin
             status = Timeout::timeout(ts) {
                 while processed_cnt != distributions_list.size
+                    sleep 5
                     distributions_list.reject{|i| seen.has_key? i[:archive_name_with_revision] }.each do |i|
                          #resp = jcc.request :get, "/builds/#{jc_id}/short_log"
                          #build_async.log :debug, "#{resp}" 
