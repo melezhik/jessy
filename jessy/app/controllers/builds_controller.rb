@@ -87,22 +87,30 @@ class BuildsController < ApplicationController
             @build.update  :has_stack => true, :state => 'succeeded', :distribution_name => parent_build[:distribution_name]
             @build.save!
 
-            @build.log :debug, "create jc build"
+            if params[:no_copy_install_base]
+                @build.log :debug, "do not copy install base due to param[:no_copy_install_base] is set to <#{param[:no_copy_install_base]}>"
+                flash[:notice] = "build ID: #{@build.id} for project ID: #{params[:project_id]} has been successfully reverted; parent build ID: #{@build.parent_id}"
+            else
+                @build.log :debug, "create jc build"
+    
+                resp = @project.jcc.request :post, '/builds',  'build[key_id]' => "#{@build.id}" 
+                jc_id = resp.headers[:build_id]
+                @build.log :debug, "create jc build ok. js_id:#{jc_id}"
 
-            resp = @project.jcc.request :post, '/builds',  'build[key_id]' => "#{@build.id}" 
-            jc_id = resp.headers[:build_id]
-            @build.log :debug, "create jc build ok. js_id:#{jc_id}"
-
-            @build.log :debug, "copy ancestor build via jc server, ancestor build_id: #{parent_build.id}"
-            resp = @project.jcc.request :post, "/builds/#{jc_id}/copy", 'key_id' => "#{parent_build.id}"
-            @build.log :debug, "copy jc build ok"
-
-            @build.update!  :has_install_base => true 
-            @build.save!
-
-            @build.log :info,  "successfully reverted project to build ID: #{parent_build.id}; new build ID: #{@build.id}"
-
-            flash[:notice] = "build ID: #{@build.id} for project ID: #{params[:project_id]} has been successfully reverted; parent build ID: #{@build.parent_id}"
+                @build.update!  :jc_id => jc_id
+                @build.save!
+    
+                @build.log :debug, "copy ancestor build via jc server, ancestor build_id: #{parent_build.id}"
+                resp = @project.jcc.request :post, "/builds/#{jc_id}/copy", 'key_id' => "#{parent_build.id}"
+                @build.log :debug, "copy jc build ok"
+    
+                @build.update!  :has_install_base => true 
+                @build.save!
+    
+                @build.log :info,  "successfully reverted project to build ID: #{parent_build.id}; new build ID: #{@build.id}"
+    
+                flash[:notice] = "build ID: #{@build.id} for project ID: #{params[:project_id]} has been successfully reverted; parent build ID: #{@build.parent_id}"
+            end            
         else
             flash[:alert] = "cannot revert project to unsucceded build; parent build ID:#{parent_build.id}; state:#{parent_build.state}"
         end

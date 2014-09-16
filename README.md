@@ -134,7 +134,8 @@ Here I "drop" some common actions which may be done with restfull api as well
 ## copy build from one project to another project 
 
 
-    curl -X POST http://127.0.0.1/projects/<project-id>/builds/<build-id>/revert -d '' -f -o /dev/null
+    - curl -X POST http://127.0.0.1/projects/<project-id>/builds/<build-id>/revert -d '' -f -o /dev/null
+    - curl -X POST http://127.0.0.1/projects/<project-id>/builds/<build-id>/revert -d 'no_copy_install_base=1' -f -o /dev/null # the same as above, but wo coping install base
 
 
 - __build-id__    - the build ID which you want to copy 
