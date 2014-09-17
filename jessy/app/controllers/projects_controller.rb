@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
 
 
     skip_before_filter :authenticate_user!, :only => [ :last_successfull_build ]
+    load_and_authorize_resource param_method: :project_params
 
     def new
         @project = Project.new

@@ -15,8 +15,9 @@ class Ability
          can :manage, :all
        elsif user.has_role? :user
          can :read, :all
-         can [:create], [Build]
-         can [:build_status], [Project]
+         can :manage, [Build]
+         can :manage, [Project]
+         can :manage, [Source]
        else
          #can :read, :all
        end

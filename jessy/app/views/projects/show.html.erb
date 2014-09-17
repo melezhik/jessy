@@ -41,10 +41,10 @@
       <tr>
         <th>NN</th>
         <th>ID</th>
+        <th>Status</th>
         <th>Compile ID</th>
         <th>Pinto Log</th>
         <th>Compile Log</th>
-        <th>Status</th>
         <th>Parent Build</th>
         <th>Updated</th>
         <th>Artefacts</th>
@@ -71,6 +71,9 @@
                 <%= item.id %>
             </td>
             <td>
+                <%= item[:state] %>
+            </td>
+            <td>
                 <%= item.jc_id || '---' %>
             </td>
             <td>
@@ -82,9 +85,6 @@
                 <% else %>
                     ---
                 <% end %>
-            </td>
-            <td>
-                <%= item[:state] %>
             </td>
             <td>
                 <%= item[:parent_id] || '---' %>

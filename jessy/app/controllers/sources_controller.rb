@@ -1,5 +1,9 @@
 require 'uri'
+
 class SourcesController < ApplicationController
+
+    load_and_authorize_resource param_method: :source_params
+
     def create
 
         @project = Project.find params[:project_id]
