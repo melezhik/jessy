@@ -59,7 +59,6 @@ mysql -h sql3.webdev.x -ujessy -pjessy jessy  < pinto.sql
 
 
 rake db:migrate
-mysql -h sql3.webdev.x -ujessy -pjessy jessy -sNe  'drop table logs'
 mysql -h sql3.webdev.x -ujessy -pjessy jessy -sNe  'update builds set has_install_base = 1 where has_stack  = 1'
 mysql -h sql3.webdev.x -ujessy -pjessy jessy -sNe  'update projects set jc_host = "http://pinto.webdev.x:4000"'
 
