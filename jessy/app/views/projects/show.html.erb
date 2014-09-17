@@ -40,7 +40,10 @@
     <table class="table-bordered table-striped table">
       <tr>
         <th>NN</th>
-        <th>Log</th>
+        <th>ID</th>
+        <th>Compile ID</th>
+        <th>Pinto Log</th>
+        <th>Compile Log</th>
         <th>Status</th>
         <th>Parent Build</th>
         <th>Updated</th>
@@ -65,7 +68,20 @@
                 <%= i %>
             </td>
             <td>
-                <%= link_to "ID: #{item.id}", [@project, item] %>
+                <%= item.id %>
+            </td>
+            <td>
+                <%= item.jc_id || '---' %>
+            </td>
+            <td>
+                <%= link_to "view", [@project, item] %>
+            </td>
+            <td>
+                <% if item.jc_id %>
+                    <%= link_to "view", jc_log_project_build_path(@project,item), :title => 'show compile log from jc service' %>
+                <% else %>
+                    ---
+                <% end %>
             </td>
             <td>
                 <%= item[:state] %>
@@ -105,7 +121,6 @@
                 <% end %>
             </td>
             <td>
-                <%= link_to "view log", full_log_project_build_path(@project,item) , :title => 'show build log' %> |
                 <% unless item.released?  %>
                     <%= link_to "delete", [@project, item], :method => :delete, :title => 'permanently delete this build' %> |
                 <% end %>
