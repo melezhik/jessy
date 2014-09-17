@@ -19,7 +19,10 @@ class Ability
          can :manage, [Project]
          can :manage, [Source]
        else
-         #can :read, :all
+         can :read, :all
+         can :revert, Build 
+         can :download, Build 
+         can :last_successfull_build, [Project]
        end
     #
     # The first argument to `can` is the action you are giving the user 

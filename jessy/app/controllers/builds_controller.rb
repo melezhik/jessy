@@ -6,8 +6,9 @@ require 'open3'
 class BuildsController < ApplicationController
 
 
-    skip_before_filter :authenticate_user!, :only => [ :destroy, :download, :revert ]
     load_and_authorize_resource param_method: :builds_params
+
+    skip_before_filter :authenticate_user!, :only => [ :destroy, :download, :revert ]
 
     def create
 
