@@ -75,3 +75,9 @@ scp -r  ~/.jessy/builds melezhik.x:~/.jessy/
 rm -rf ~/.jessy
 
 
+
+# памятка
+удаление всех билдов из проекта:
+
+mysql -h sql3.webdev.x -ujessy -pjessy jessy -sNe 'select project_id, id from builds where project_id = 13' | \
+perl -n -e '($p,$b) = split; print "curl -X DELETE http://melezhik.x:3001/projects/$p/builds/$b --no-proxy http://melezhik.x:3001 -d \"\" \n"'
