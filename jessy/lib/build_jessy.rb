@@ -238,13 +238,13 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
                 cmd <<  "./Build realclean && perl Build.PL --quiet 1>/dev/null 2>&1"
             end
 
-            cmd <<  "./Build manifest --quiet 1>/dev/null"
-            cmd <<  "./Build dist --quiet 1>/dev/null"
+            cmd <<  "./Build manifest --quiet 2>&1"
+            cmd <<  "./Build dist --quiet 2>&1"
         else
 	        cmd <<  "perl Makefile.PL 1>/dev/null"
             cmd <<  "make realclean && perl Makefile.PL 1>/dev/null"
-            cmd <<  "make manifest 1>/dev/null"
-            cmd <<  "make dist 1>/dev/null"
+            cmd <<  "make manifest 2>&1"
+            cmd <<  "make dist 2>&1"
         end
         _execute_command(cmd.join(' && '))
         distro_name = `cd #{build.local_path}/#{cmp.local_path} && ls *.gz`.chomp!
