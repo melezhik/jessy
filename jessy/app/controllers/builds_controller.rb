@@ -5,14 +5,12 @@ require 'open3'
 
 class BuildsController < ApplicationController
 
-
-    load_and_authorize_resource param_method: :builds_params
-
     skip_before_filter :authenticate_user!, :only => [ :destroy, :download, :revert ]
 
     def create
 
         @project = Project.find(params[:project_id])
+
         @build = @project.builds.create!
         
         FileUtils.mkdir_p @build.local_path
