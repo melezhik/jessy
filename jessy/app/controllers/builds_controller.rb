@@ -114,15 +114,16 @@ class BuildsController < ApplicationController
                 @build.save!
     
                 @build.log :info,  "successfully reverted project to build ID: #{parent_build.id}; new build ID: #{@build.id}"
-    
-                flash[:notice] = "build ID: #{@build.id} for project ID: #{params[:project_id]} has been successfully reverted; parent build ID: #{@build.parent_id}"
+                message = "build ID: #{@build.id} for project ID: #{params[:project_id]} has been successfully reverted; parent build ID: #{@build.parent_id}"    
+                flash[:notice] = message
             end            
         else
-            flash[:alert] = "cannot revert project to unsucceded build; parent build ID:#{parent_build.id}; state:#{parent_build.state}"
+            message =  "cannot revert project to unsucceded build; parent build ID:#{parent_build.id}; state:#{parent_build.state}"
+            flash[:alert] = message
         end
 
         if request.env["HTTP_REFERER"].nil?
-            render  :text => "successfully reverted project to build ID: #{parent_build.id}; new build ID: #{@build.id}\n"
+            render  :text => "#{message}\n"
         else
             redirect_to @project
         end
@@ -230,7 +231,8 @@ class BuildsController < ApplicationController
 
         jc_id = nil
         if build.locked? or  build.released?
-            flash[:alert] = "cannot delete locked  or released build! ID:#{params[:id]}"
+            message = "cannot delete locked  or released build! ID:#{params[:id]}"
+            flash[:alert] = message
         else
             FileUtils.rm_rf build.local_path
             jc_id = build.jc_id
@@ -241,15 +243,19 @@ class BuildsController < ApplicationController
             else
                 @project.history.create!( { :action => "delete build ID: #{params[:id]}" })
             end
-        end
 
-        if jc_id
-            @project.history.create!( { :action => "delete jc build, build ID: #{params[:id]}, jc ID: #{jc_id}" })            
-            @project.jcc.request :delete, "/builds/#{jc_id}"
+
+            if jc_id
+                @project.history.create!( { :action => "delete jc build, build ID: #{params[:id]}, jc ID: #{jc_id}" })            
+                @project.jcc.request :delete, "/builds/#{jc_id}"
+            end
+    
+            message = "build, ID: #{params[:id]} has been successfully destroyed" 
+    
         end
 
         if request.env["HTTP_REFERER"].nil?
-            render  :text => "build, ID: #{params[:id]} has been successfully destroyed\n"
+            render  :text => "#{message}\n"
         else
             redirect_to @project 
         end
@@ -310,6 +316,13 @@ class BuildsController < ApplicationController
          @build = Build.find(params[:id])
          @project = Project.find(params[:project_id])
          res = @project.jcc.request :get, "/builds/#{@build[:jc_id]}"
+         @data = "#{res}"
+    end
+
+    def cpanm_log
+         @build = Build.find(params[:id])
+         @project = Project.find(params[:project_id])
+         res  = @project.jcc.request :get, "/builds/#{@build[:jc_id]}/cpanm_log?cpanm_id=#{params[:cpanm_id]}"
          @data = "#{res}"
     end
 

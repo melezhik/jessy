@@ -1,5 +1,5 @@
 <%= link_to 'Back To Project', project_path(@project) %> |
-<strong>Compile Log </strong> |
+<strong>Cpanm Log </strong> |
     <%= link_to "Recent Log", project_build_path(@project,@build), :title => "Last Entries #{@build.recent_log_entries_number}" %> |
     <%= link_to 'Full Log', full_log_project_build_path(@project,@build), :title => 'full log' %> |
     <%= link_to 'Distributions List', list_project_build_path(@project,@build), :title => 'list of distributions archives' %> |
