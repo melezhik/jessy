@@ -155,3 +155,8 @@ Here I "drop" some common actions which may be done with restfull api as well
 - [ruby on rails](http://rubyonrails.org)
 - [delayed job](https://github.com/collectiveidea/delayed_job)
 
+
+# Мониторинг jessy в глазе
+- http://moon5.adriver.x:3000/reports/22/view
+
+
