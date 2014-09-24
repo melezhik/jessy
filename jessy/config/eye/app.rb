@@ -30,14 +30,22 @@ Eye.application app do
     end
 
     process :api do
+
         pid_file "tmp/pids/server.pid"
+
         start_command "puma -C config/puma.rb -d --pidfile #{cwd}/tmp/pids/server.pid"
         daemonize false
+
         stdall "#{cwd}/log/api.eye.log"
         start_timeout 15.seconds
         stop_timeout 15.seconds
+
         env 'PINTO_HOME' => ENV['HOME'] + '/opt/local/pinto'
         env 'PINTO_REPOSITORY_ROOT' =>  ENV['HOME'] + '/.jessy/repo/'
+
+	if ENV['RAILS_ENV'] == 'production'
+		env 'SECRET_KEY_BASE' => 'jessy'
+	end	
     end
 
 end
