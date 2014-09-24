@@ -14,7 +14,7 @@
     </header>
     <main role="main">
     <% if user_signed_in? %>
-    <p class="breadcrumb">user: <strong><%= current_user.username %></strong><br>role: <strong><%= current_user.roles_mask == 1 ? 'admin' : 'user' %></strong></p>
+    <p class="breadcrumb">user: <strong><%= current_user.username %></strong><br>role: <strong><%= current_user.roles_mask == 1 ? 'admin' :  current_user.roles_mask == 2 ?  'user' : 'guest' %></strong></p>
     <% end %>
        <%= render 'layouts/messages' %>
        <%= yield %>
