@@ -2,6 +2,7 @@
 <strong>Cpanm Log </strong> |
     <%= link_to "Recent Log", project_build_path(@project,@build), :title => "Last Entries #{@build.recent_log_entries_number}" %> |
     <%= link_to 'Full Log', full_log_project_build_path(@project,@build), :title => 'full log' %> |
+    <%= link_to "Compile Log", jc_log_project_build_path(@project,@build), :title => 'Show comoile log from jc service' %> |
     <%= link_to 'Distributions List', list_project_build_path(@project,@build), :title => 'list of distributions archives' %> |
     <%= link_to 'Configuration', configuration_project_build_path(@project,@build), :title => 'show build configuration' %> |
     <%= link_to 'Changes', changes_project_build_path(@project,@build), :title => 'changes for this build' %>
@@ -19,13 +20,7 @@
 
 
 <pre>
-<% @data.split("\n").each do |l| %>
-    <% if ( m  = /See .*\/(.*?)\/build\.log for details/.match l ) %>
-    <%= l %> <%= link_to "see cpanm log for #{m[1]}", cpanm_log_project_build_path( @project,@build, :cpanm_id => m[1] ) %>
-    <% else  %>
-    <%= l %>
-    <% end %>
-<% end %>
+    <%= @data %>
 </pre>
 
 [

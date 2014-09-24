@@ -21,7 +21,7 @@
 <pre>
 <% @data.split("\n").each do |l| %>
     <% if ( m  = /See .*\/(.*?)\/build\.log for details/.match l ) %>
-    <%= l %> <%= link_to "see cpanm log for #{m[1]}", cpanm_log_project_build_path( @project,@build, :cpanm_id => m[1] ) %>
+    <%= l %> <%= link_to "[#{m[1]}]", cpanm_log_project_build_path( @project,@build, :cpanm_id => m[1] ) %>
     <% else  %>
     <%= l %>
     <% end %>
