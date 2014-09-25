@@ -69,5 +69,12 @@ class Project < ActiveRecord::Base
         verbose
     end
 
+
+    def jc_hosts
+        [
+            {  :name => :squeeze,  :url => 'http://pinto.webdev.x:4000' },
+            {  :name => :wheezy , :url  => 'http://jc-wheezy.x:4000' }
+        ]
+    end
 end
 

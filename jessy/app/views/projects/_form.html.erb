@@ -28,7 +28,7 @@
   <% else %>  
   <p>
     <%= f.label :jc_host %><br>
-    <%= f.text_field :jc_host, :size => "100" %>
+    <%= f.select(:jc_host, @project.jc_hosts.collect {|h| [ h[:name], h[:url] ] }, { prompt: 'Select JC Host'} ) %>
   </p>
   <% end %>
 
