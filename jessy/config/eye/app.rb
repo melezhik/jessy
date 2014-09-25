@@ -20,6 +20,7 @@ Eye.application app do
             process "dj#{i}" do
                 pid_file "tmp/pids/delayed_job.#{i}.pid" # pid_path will be expanded with the working_dir
                 start_command "rake jobs:work"
+                stop_signals [:INT, 30.seconds, :TERM, 10.seconds, :KILL]
                 daemonize true
                 stdall "#{cwd}/log/dj.eye.log"
                 env 'RESTCLIENT_LOG' => "#{cwd}/log/rc.log"
@@ -43,9 +44,9 @@ Eye.application app do
         env 'PINTO_HOME' => ENV['HOME'] + '/opt/local/pinto'
         env 'PINTO_REPOSITORY_ROOT' =>  ENV['HOME'] + '/.jessy/repo/'
 
-	if ENV['RAILS_ENV'] == 'production'
-		env 'SECRET_KEY_BASE' => 'jessy'
-	end	
+    	if ENV['RAILS_ENV'] == 'production'
+	    	env 'SECRET_KEY_BASE' => 'jessy'
+    	end	
     end
 
 end

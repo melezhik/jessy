@@ -2,10 +2,12 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Jessy" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Jessy" %>">
-    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <title><%= content_for?(:title) ? yield(:title) : "Ui" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ui" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%# Modernizr is required for Zurb Foundation %>
+    <%= javascript_include_tag 'vendor/modernizr' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
@@ -13,9 +15,6 @@
       <%= render 'layouts/navigation' %>
     </header>
     <main role="main">
-    <% if user_signed_in? %>
-    <p class="breadcrumb">user: <strong><%= current_user.username %></strong><br>role: <strong><%= current_user.roles_mask == 1 ? 'admin' :  current_user.roles_mask == 2 ?  'user' : 'guest' %></strong></p>
-    <% end %>
        <%= render 'layouts/messages' %>
        <%= yield %>
     </main>
