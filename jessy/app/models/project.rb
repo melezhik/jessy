@@ -5,6 +5,7 @@ class Project < ActiveRecord::Base
     has_many :history, :dependent => :destroy
 
     validates :title, presence: true , length: { minimum: 2 }
+    validates :jc_host, presence: true
 
     def jcc
         @jcc ||= JCC.new jc_host
@@ -73,7 +74,8 @@ class Project < ActiveRecord::Base
     def jc_hosts
         [
             {  :name => :squeeze,  :url => 'http://pinto.webdev.x:4000' },
-            {  :name => :wheezy , :url  => 'http://jc-wheezy.x:4000' }
+            {  :name => :wheezy , :url  => 'http://jc-wheezy.x:4000' },
+            {  :name => :squeeze_test,  :url => 'http://pinto.webdev.x:4001' }
         ]
     end
 end
