@@ -81,4 +81,4 @@ group :development do
   gem 'rails_layout'
 end
 
-gem 'foundation-rails', '5.4.3.1'
+# gem 'foundation-rails', '5.4.3.1'
