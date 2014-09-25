@@ -5,6 +5,7 @@ class Project < ActiveRecord::Base
     has_many :history, :dependent => :destroy
 
     validates :title, presence: true , length: { minimum: 2 }
+    validates :jc_host, presence: true
 
     def jcc
         @jcc ||= JCC.new jc_host
