@@ -107,7 +107,7 @@ class BuildsController < ApplicationController
                 @build.save!
     
                 @build.log :debug, "copy ancestor build via jc server, ancestor build_id: #{parent_build.id}"
-                resp = @project.jcc.request :post, "/builds/#{jc_id}/copy", 'key_id' => "#{parent_build.id}"
+                resp = @project.jcc.request :post, "/builds/#{jc_id}/copy", 'jc_id' => "#{parent_build.jc_id}"
                 @build.log :debug, "copy jc build ok"
     
                 @build.update!  :has_install_base => true 

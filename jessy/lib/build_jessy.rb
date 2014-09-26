@@ -40,7 +40,7 @@ class BuildJessy < Struct.new( :build_async, :project, :build, :distributions, :
          
             if build.has_ancestor?
                 build_async.log :debug, "copy ancestor build via jc server, ancestor build_id: #{build.ancestor.id}"
-                resp = jcc.request :post, "/builds/#{jc_id}/copy", 'key_id' => "#{build.ancestor.id}"
+                resp = jcc.request :post, "/builds/#{jc_id}/copy", 'jc_id' => "#{build.ancestor.jc_id}"
                 build_async.log :debug, "copy jc build ok"
                 build.update!({ :has_install_base => true })
                 build.save!
