@@ -28,7 +28,7 @@ Ui::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  config.log_level = :debug
+  config.log_level = :info
 
   config.action_mailer.default_url_options = { host: 'http://melezhik.x:3000', port: 3000 }
 
