@@ -1,0 +1,528 @@
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 539 where jc_id is null and id = 4  " # I, [2014-09-24T13:52:06.648725 #9300]  INFO -- : create build ID: 539. key:4 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 540 where jc_id is null and id = 5  " # I, [2014-09-24T13:52:06.659753 #9300]  INFO -- : create build ID: 540. key:5 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 541 where jc_id is null and id = 10  " # I, [2014-09-24T13:52:06.672338 #9318]  INFO -- : create build ID: 541. key:10 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 542 where jc_id is null and id = 41  " # I, [2014-09-24T13:52:06.683417 #9318]  INFO -- : create build ID: 542. key:41 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 543 where jc_id is null and id = 43  " # I, [2014-09-24T13:52:06.693976 #9318]  INFO -- : create build ID: 543. key:43 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 544 where jc_id is null and id = 45  " # I, [2014-09-24T13:52:06.704487 #9318]  INFO -- : create build ID: 544. key:45 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 545 where jc_id is null and id = 47  " # I, [2014-09-24T13:52:06.715226 #9318]  INFO -- : create build ID: 545. key:47 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 546 where jc_id is null and id = 107  " # I, [2014-09-24T13:52:06.726027 #9318]  INFO -- : create build ID: 546. key:107 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 547 where jc_id is null and id = 108  " # I, [2014-09-24T13:52:06.736812 #9318]  INFO -- : create build ID: 547. key:108 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 548 where jc_id is null and id = 113  " # I, [2014-09-24T13:52:06.747339 #9318]  INFO -- : create build ID: 548. key:113 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 549 where jc_id is null and id = 115  " # I, [2014-09-24T13:52:06.758091 #9318]  INFO -- : create build ID: 549. key:115 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 550 where jc_id is null and id = 130  " # I, [2014-09-24T13:52:06.768873 #9318]  INFO -- : create build ID: 550. key:130 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 551 where jc_id is null and id = 143  " # I, [2014-09-24T13:52:06.779464 #9318]  INFO -- : create build ID: 551. key:143 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 552 where jc_id is null and id = 172  " # I, [2014-09-24T13:52:06.789907 #9318]  INFO -- : create build ID: 552. key:172 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 553 where jc_id is null and id = 174  " # I, [2014-09-24T13:52:06.800379 #9318]  INFO -- : create build ID: 553. key:174 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 554 where jc_id is null and id = 179  " # I, [2014-09-24T13:52:06.811164 #9318]  INFO -- : create build ID: 554. key:179 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 555 where jc_id is null and id = 181  " # I, [2014-09-24T13:52:06.821673 #9318]  INFO -- : create build ID: 555. key:181 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 556 where jc_id is null and id = 182  " # I, [2014-09-24T13:52:06.832155 #9318]  INFO -- : create build ID: 556. key:182 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 557 where jc_id is null and id = 184  " # I, [2014-09-24T13:52:06.842617 #9318]  INFO -- : create build ID: 557. key:184 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 558 where jc_id is null and id = 197  " # I, [2014-09-24T13:52:06.853261 #9318]  INFO -- : create build ID: 558. key:197 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 559 where jc_id is null and id = 209  " # I, [2014-09-24T13:52:06.863768 #9318]  INFO -- : create build ID: 559. key:209 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 560 where jc_id is null and id = 211  " # I, [2014-09-24T13:52:06.874809 #9318]  INFO -- : create build ID: 560. key:211 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 561 where jc_id is null and id = 221  " # I, [2014-09-24T13:52:06.885287 #9318]  INFO -- : create build ID: 561. key:221 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 562 where jc_id is null and id = 222  " # I, [2014-09-24T13:52:06.895645 #9318]  INFO -- : create build ID: 562. key:222 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 563 where jc_id is null and id = 235  " # I, [2014-09-24T13:52:06.907485 #9300]  INFO -- : create build ID: 563. key:235 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 564 where jc_id is null and id = 236  " # I, [2014-09-24T13:52:06.918290 #9300]  INFO -- : create build ID: 564. key:236 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 565 where jc_id is null and id = 239  " # I, [2014-09-24T13:52:06.928697 #9300]  INFO -- : create build ID: 565. key:239 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 566 where jc_id is null and id = 243  " # I, [2014-09-24T13:52:06.940710 #9309]  INFO -- : create build ID: 566. key:243 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 567 where jc_id is null and id = 245  " # I, [2014-09-24T13:52:06.951324 #9309]  INFO -- : create build ID: 567. key:245 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 568 where jc_id is null and id = 246  " # I, [2014-09-24T13:52:06.963590 #9282]  INFO -- : create build ID: 568. key:246 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 569 where jc_id is null and id = 247  " # I, [2014-09-24T13:52:06.974198 #9282]  INFO -- : create build ID: 569. key:247 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 570 where jc_id is null and id = 248  " # I, [2014-09-24T13:52:06.984502 #9282]  INFO -- : create build ID: 570. key:248 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 571 where jc_id is null and id = 269  " # I, [2014-09-24T13:52:06.994826 #9309]  INFO -- : create build ID: 571. key:269 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 572 where jc_id is null and id = 271  " # I, [2014-09-24T13:52:07.005195 #9309]  INFO -- : create build ID: 572. key:271 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 573 where jc_id is null and id = 273  " # I, [2014-09-24T13:52:07.015644 #9309]  INFO -- : create build ID: 573. key:273 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 574 where jc_id is null and id = 274  " # I, [2014-09-24T13:52:07.026197 #9309]  INFO -- : create build ID: 574. key:274 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 575 where jc_id is null and id = 276  " # I, [2014-09-24T13:52:07.036531 #9309]  INFO -- : create build ID: 575. key:276 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 576 where jc_id is null and id = 280  " # I, [2014-09-24T13:52:07.047052 #9282]  INFO -- : create build ID: 576. key:280 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 577 where jc_id is null and id = 282  " # I, [2014-09-24T13:52:07.057346 #9282]  INFO -- : create build ID: 577. key:282 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 578 where jc_id is null and id = 285  " # I, [2014-09-24T13:52:07.068015 #9309]  INFO -- : create build ID: 578. key:285 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 579 where jc_id is null and id = 295  " # I, [2014-09-24T13:52:07.078546 #9309]  INFO -- : create build ID: 579. key:295 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 580 where jc_id is null and id = 306  " # I, [2014-09-24T13:52:07.089058 #9309]  INFO -- : create build ID: 580. key:306 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 581 where jc_id is null and id = 308  " # I, [2014-09-24T13:52:07.099495 #9282]  INFO -- : create build ID: 581. key:308 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 582 where jc_id is null and id = 317  " # I, [2014-09-24T13:52:07.110857 #9300]  INFO -- : create build ID: 582. key:317 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 583 where jc_id is null and id = 325  " # I, [2014-09-24T13:52:07.121324 #9300]  INFO -- : create build ID: 583. key:325 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 584 where jc_id is null and id = 345  " # I, [2014-09-24T13:52:07.131887 #9300]  INFO -- : create build ID: 584. key:345 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 585 where jc_id is null and id = 352  " # I, [2014-09-24T13:52:07.142224 #9300]  INFO -- : create build ID: 585. key:352 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 586 where jc_id is null and id = 378  " # I, [2014-09-24T13:52:07.152504 #9300]  INFO -- : create build ID: 586. key:378 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 587 where jc_id is null and id = 386  " # I, [2014-09-24T13:52:07.162729 #9300]  INFO -- : create build ID: 587. key:386 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 588 where jc_id is null and id = 387  " # I, [2014-09-24T13:52:07.173113 #9300]  INFO -- : create build ID: 588. key:387 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 589 where jc_id is null and id = 388  " # I, [2014-09-24T13:52:07.183472 #9300]  INFO -- : create build ID: 589. key:388 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 590 where jc_id is null and id = 392  " # I, [2014-09-24T13:52:07.193897 #9300]  INFO -- : create build ID: 590. key:392 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 591 where jc_id is null and id = 395  " # I, [2014-09-24T13:52:07.204189 #9300]  INFO -- : create build ID: 591. key:395 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 592 where jc_id is null and id = 401  " # I, [2014-09-24T13:52:07.214188 #9300]  INFO -- : create build ID: 592. key:401 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 593 where jc_id is null and id = 414  " # I, [2014-09-24T13:52:07.224346 #9300]  INFO -- : create build ID: 593. key:414 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 594 where jc_id is null and id = 421  " # I, [2014-09-24T13:52:07.234556 #9300]  INFO -- : create build ID: 594. key:421 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 595 where jc_id is null and id = 422  " # I, [2014-09-24T13:52:07.246417 #9318]  INFO -- : create build ID: 595. key:422 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 596 where jc_id is null and id = 427  " # I, [2014-09-24T13:52:07.257937 #9282]  INFO -- : create build ID: 596. key:427 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 597 where jc_id is null and id = 429  " # I, [2014-09-24T13:52:07.268131 #9282]  INFO -- : create build ID: 597. key:429 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 598 where jc_id is null and id = 432  " # I, [2014-09-24T13:52:07.277851 #9282]  INFO -- : create build ID: 598. key:432 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 599 where jc_id is null and id = 434  " # I, [2014-09-24T13:52:07.287904 #9282]  INFO -- : create build ID: 599. key:434 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 600 where jc_id is null and id = 435  " # I, [2014-09-24T13:52:07.297954 #9282]  INFO -- : create build ID: 600. key:435 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 601 where jc_id is null and id = 436  " # I, [2014-09-24T13:52:07.308218 #9282]  INFO -- : create build ID: 601. key:436 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 602 where jc_id is null and id = 439  " # I, [2014-09-24T13:52:07.318035 #9282]  INFO -- : create build ID: 602. key:439 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 603 where jc_id is null and id = 445  " # I, [2014-09-24T13:52:07.327909 #9282]  INFO -- : create build ID: 603. key:445 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 604 where jc_id is null and id = 462  " # I, [2014-09-24T13:52:07.337919 #9282]  INFO -- : create build ID: 604. key:462 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 605 where jc_id is null and id = 469  " # I, [2014-09-24T13:52:07.347825 #9282]  INFO -- : create build ID: 605. key:469 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 606 where jc_id is null and id = 470  " # I, [2014-09-24T13:52:07.357722 #9282]  INFO -- : create build ID: 606. key:470 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 607 where jc_id is null and id = 481  " # I, [2014-09-24T13:52:07.368012 #9282]  INFO -- : create build ID: 607. key:481 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 608 where jc_id is null and id = 509  " # I, [2014-09-24T13:52:07.378098 #9282]  INFO -- : create build ID: 608. key:509 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 609 where jc_id is null and id = 512  " # I, [2014-09-24T13:52:07.387675 #9282]  INFO -- : create build ID: 609. key:512 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 610 where jc_id is null and id = 513  " # I, [2014-09-24T13:52:07.397662 #9282]  INFO -- : create build ID: 610. key:513 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 611 where jc_id is null and id = 515  " # I, [2014-09-24T13:52:07.407721 #9282]  INFO -- : create build ID: 611. key:515 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 612 where jc_id is null and id = 519  " # I, [2014-09-24T13:52:07.417907 #9282]  INFO -- : create build ID: 612. key:519 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 613 where jc_id is null and id = 520  " # I, [2014-09-24T13:52:07.427852 #9282]  INFO -- : create build ID: 613. key:520 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 614 where jc_id is null and id = 526  " # I, [2014-09-24T13:52:07.439042 #9300]  INFO -- : create build ID: 614. key:526 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 615 where jc_id is null and id = 528  " # I, [2014-09-24T13:52:07.449445 #9300]  INFO -- : create build ID: 615. key:528 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 616 where jc_id is null and id = 530  " # I, [2014-09-24T13:52:07.459840 #9300]  INFO -- : create build ID: 616. key:530 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 617 where jc_id is null and id = 536  " # I, [2014-09-24T13:52:07.469826 #9300]  INFO -- : create build ID: 617. key:536 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 618 where jc_id is null and id = 537  " # I, [2014-09-24T13:52:07.479901 #9300]  INFO -- : create build ID: 618. key:537 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 619 where jc_id is null and id = 539  " # I, [2014-09-24T13:52:07.490179 #9300]  INFO -- : create build ID: 619. key:539 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 620 where jc_id is null and id = 540  " # I, [2014-09-24T13:52:07.500353 #9300]  INFO -- : create build ID: 620. key:540 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 621 where jc_id is null and id = 546  " # I, [2014-09-24T13:52:07.510814 #9300]  INFO -- : create build ID: 621. key:546 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 622 where jc_id is null and id = 554  " # I, [2014-09-24T13:52:07.520960 #9300]  INFO -- : create build ID: 622. key:554 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 623 where jc_id is null and id = 555  " # I, [2014-09-24T13:52:07.530752 #9300]  INFO -- : create build ID: 623. key:555 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 624 where jc_id is null and id = 557  " # I, [2014-09-24T13:52:07.540611 #9300]  INFO -- : create build ID: 624. key:557 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 625 where jc_id is null and id = 558  " # I, [2014-09-24T13:52:07.552565 #9318]  INFO -- : create build ID: 625. key:558 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 626 where jc_id is null and id = 559  " # I, [2014-09-24T13:52:07.565758 #9291]  INFO -- : create build ID: 626. key:559 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 627 where jc_id is null and id = 564  " # I, [2014-09-24T13:52:07.577876 #9282]  INFO -- : create build ID: 627. key:564 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 628 where jc_id is null and id = 566  " # I, [2014-09-24T13:52:07.587934 #9282]  INFO -- : create build ID: 628. key:566 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 629 where jc_id is null and id = 572  " # I, [2014-09-24T13:52:07.598099 #9282]  INFO -- : create build ID: 629. key:572 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 630 where jc_id is null and id = 573  " # I, [2014-09-24T13:52:07.607790 #9282]  INFO -- : create build ID: 630. key:573 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 631 where jc_id is null and id = 574  " # I, [2014-09-24T13:52:07.617999 #9282]  INFO -- : create build ID: 631. key:574 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 632 where jc_id is null and id = 582  " # I, [2014-09-24T13:52:07.629666 #9291]  INFO -- : create build ID: 632. key:582 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 633 where jc_id is null and id = 585  " # I, [2014-09-24T13:52:07.641088 #9291]  INFO -- : create build ID: 633. key:585 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 634 where jc_id is null and id = 589  " # I, [2014-09-24T13:52:07.652944 #9309]  INFO -- : create build ID: 634. key:589 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 635 where jc_id is null and id = 590  " # I, [2014-09-24T13:52:07.663514 #9309]  INFO -- : create build ID: 635. key:590 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 636 where jc_id is null and id = 591  " # I, [2014-09-24T13:52:07.673672 #9309]  INFO -- : create build ID: 636. key:591 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 637 where jc_id is null and id = 592  " # I, [2014-09-24T13:52:07.683820 #9309]  INFO -- : create build ID: 637. key:592 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 638 where jc_id is null and id = 593  " # I, [2014-09-24T13:52:07.693977 #9309]  INFO -- : create build ID: 638. key:593 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 639 where jc_id is null and id = 600  " # I, [2014-09-24T13:52:07.704103 #9309]  INFO -- : create build ID: 639. key:600 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 640 where jc_id is null and id = 621  " # I, [2014-09-24T13:52:07.714275 #9309]  INFO -- : create build ID: 640. key:621 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 641 where jc_id is null and id = 635  " # I, [2014-09-24T13:52:07.724339 #9309]  INFO -- : create build ID: 641. key:635 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 642 where jc_id is null and id = 639  " # I, [2014-09-24T13:52:07.734420 #9309]  INFO -- : create build ID: 642. key:639 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 643 where jc_id is null and id = 642  " # I, [2014-09-24T13:52:07.744612 #9309]  INFO -- : create build ID: 643. key:642 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 644 where jc_id is null and id = 643  " # I, [2014-09-24T13:52:07.755706 #9291]  INFO -- : create build ID: 644. key:643 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 645 where jc_id is null and id = 644  " # I, [2014-09-24T13:52:07.766509 #9291]  INFO -- : create build ID: 645. key:644 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 646 where jc_id is null and id = 645  " # I, [2014-09-24T13:52:07.778452 #9291]  INFO -- : create build ID: 646. key:645 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 647 where jc_id is null and id = 649  " # I, [2014-09-24T13:52:07.790361 #9309]  INFO -- : create build ID: 647. key:649 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 648 where jc_id is null and id = 652  " # I, [2014-09-24T13:52:07.801072 #9291]  INFO -- : create build ID: 648. key:652 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 649 where jc_id is null and id = 653  " # I, [2014-09-24T13:52:07.852696 #9291]  INFO -- : create build ID: 649. key:653 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 650 where jc_id is null and id = 655  " # I, [2014-09-24T13:52:07.866257 #9309]  INFO -- : create build ID: 650. key:655 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 651 where jc_id is null and id = 656  " # I, [2014-09-24T13:52:07.878962 #9282]  INFO -- : create build ID: 651. key:656 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 652 where jc_id is null and id = 658  " # I, [2014-09-24T13:52:07.890100 #9282]  INFO -- : create build ID: 652. key:658 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 653 where jc_id is null and id = 660  " # I, [2014-09-24T13:52:07.900505 #9282]  INFO -- : create build ID: 653. key:660 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 654 where jc_id is null and id = 662  " # I, [2014-09-24T13:52:07.911716 #9282]  INFO -- : create build ID: 654. key:662 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 655 where jc_id is null and id = 663  " # I, [2014-09-24T13:52:07.923544 #9300]  INFO -- : create build ID: 655. key:663 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 656 where jc_id is null and id = 734  " # I, [2014-09-24T13:52:07.934228 #9300]  INFO -- : create build ID: 656. key:734 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 657 where jc_id is null and id = 737  " # I, [2014-09-24T13:52:07.947292 #9300]  INFO -- : create build ID: 657. key:737 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 658 where jc_id is null and id = 740  " # I, [2014-09-24T13:52:07.960343 #9300]  INFO -- : create build ID: 658. key:740 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 659 where jc_id is null and id = 742  " # I, [2014-09-24T13:52:07.972580 #9300]  INFO -- : create build ID: 659. key:742 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 660 where jc_id is null and id = 743  " # I, [2014-09-24T13:52:07.982806 #9300]  INFO -- : create build ID: 660. key:743 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 661 where jc_id is null and id = 744  " # I, [2014-09-24T13:52:07.992846 #9300]  INFO -- : create build ID: 661. key:744 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 662 where jc_id is null and id = 746  " # I, [2014-09-24T13:52:08.002876 #9300]  INFO -- : create build ID: 662. key:746 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 663 where jc_id is null and id = 747  " # I, [2014-09-24T13:52:08.012746 #9300]  INFO -- : create build ID: 663. key:747 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 664 where jc_id is null and id = 753  " # I, [2014-09-24T13:52:08.022755 #9300]  INFO -- : create build ID: 664. key:753 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 665 where jc_id is null and id = 757  " # I, [2014-09-24T13:52:08.032949 #9300]  INFO -- : create build ID: 665. key:757 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 666 where jc_id is null and id = 760  " # I, [2014-09-24T13:52:08.084629 #9300]  INFO -- : create build ID: 666. key:760 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 667 where jc_id is null and id = 763  " # I, [2014-09-24T13:52:08.095108 #9300]  INFO -- : create build ID: 667. key:763 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 668 where jc_id is null and id = 776  " # I, [2014-09-24T13:52:08.106806 #9282]  INFO -- : create build ID: 668. key:776 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 669 where jc_id is null and id = 797  " # I, [2014-09-24T13:52:08.117641 #9282]  INFO -- : create build ID: 669. key:797 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 670 where jc_id is null and id = 807  " # I, [2014-09-24T13:52:08.128330 #9282]  INFO -- : create build ID: 670. key:807 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 671 where jc_id is null and id = 808  " # I, [2014-09-24T13:52:08.139476 #9282]  INFO -- : create build ID: 671. key:808 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 672 where jc_id is null and id = 809  " # I, [2014-09-24T13:52:08.150223 #9282]  INFO -- : create build ID: 672. key:809 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 673 where jc_id is null and id = 810  " # I, [2014-09-24T13:52:08.162133 #9309]  INFO -- : create build ID: 673. key:810 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 674 where jc_id is null and id = 811  " # I, [2014-09-24T13:52:08.172607 #9309]  INFO -- : create build ID: 674. key:811 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 675 where jc_id is null and id = 812  " # I, [2014-09-24T13:52:08.183252 #9300]  INFO -- : create build ID: 675. key:812 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 676 where jc_id is null and id = 813  " # I, [2014-09-24T13:52:08.194192 #9300]  INFO -- : create build ID: 676. key:813 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 677 where jc_id is null and id = 814  " # I, [2014-09-24T13:52:08.204876 #9300]  INFO -- : create build ID: 677. key:814 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 678 where jc_id is null and id = 816  " # I, [2014-09-24T13:52:08.215070 #9300]  INFO -- : create build ID: 678. key:816 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 679 where jc_id is null and id = 817  " # I, [2014-09-24T13:52:08.225388 #9300]  INFO -- : create build ID: 679. key:817 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 680 where jc_id is null and id = 822  " # I, [2014-09-24T13:52:08.235963 #9300]  INFO -- : create build ID: 680. key:822 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 681 where jc_id is null and id = 823  " # I, [2014-09-24T13:52:08.247268 #9309]  INFO -- : create build ID: 681. key:823 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 682 where jc_id is null and id = 824  " # I, [2014-09-24T13:52:08.257815 #9309]  INFO -- : create build ID: 682. key:824 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 683 where jc_id is null and id = 825  " # I, [2014-09-24T13:52:08.268273 #9309]  INFO -- : create build ID: 683. key:825 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 684 where jc_id is null and id = 826  " # I, [2014-09-24T13:52:08.293967 #9282]  INFO -- : create build ID: 684. key:826 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 685 where jc_id is null and id = 835  " # I, [2014-09-24T13:52:08.304763 #9282]  INFO -- : create build ID: 685. key:835 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 686 where jc_id is null and id = 840  " # I, [2014-09-24T13:52:08.315712 #9282]  INFO -- : create build ID: 686. key:840 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 687 where jc_id is null and id = 843  " # I, [2014-09-24T13:52:08.352672 #9282]  INFO -- : create build ID: 687. key:843 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 688 where jc_id is null and id = 844  " # I, [2014-09-24T13:52:08.363168 #9282]  INFO -- : create build ID: 688. key:844 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 689 where jc_id is null and id = 850  " # I, [2014-09-24T13:52:08.380636 #9282]  INFO -- : create build ID: 689. key:850 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 690 where jc_id is null and id = 851  " # I, [2014-09-24T13:52:08.391489 #9282]  INFO -- : create build ID: 690. key:851 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 691 where jc_id is null and id = 860  " # I, [2014-09-24T13:52:08.401966 #9282]  INFO -- : create build ID: 691. key:860 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 692 where jc_id is null and id = 891  " # I, [2014-09-24T13:52:08.412664 #9309]  INFO -- : create build ID: 692. key:891 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 693 where jc_id is null and id = 898  " # I, [2014-09-24T13:52:08.423259 #9282]  INFO -- : create build ID: 693. key:898 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 694 where jc_id is null and id = 901  " # I, [2014-09-24T13:52:08.433629 #9282]  INFO -- : create build ID: 694. key:901 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 695 where jc_id is null and id = 903  " # I, [2014-09-24T13:52:08.444308 #9282]  INFO -- : create build ID: 695. key:903 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 696 where jc_id is null and id = 906  " # I, [2014-09-24T13:52:08.454796 #9282]  INFO -- : create build ID: 696. key:906 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 697 where jc_id is null and id = 907  " # I, [2014-09-24T13:52:08.465411 #9282]  INFO -- : create build ID: 697. key:907 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 698 where jc_id is null and id = 910  " # I, [2014-09-24T13:52:08.476238 #9282]  INFO -- : create build ID: 698. key:910 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 699 where jc_id is null and id = 914  " # I, [2014-09-24T13:52:08.486361 #9282]  INFO -- : create build ID: 699. key:914 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 700 where jc_id is null and id = 915  " # I, [2014-09-24T13:52:08.496867 #9309]  INFO -- : create build ID: 700. key:915 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 701 where jc_id is null and id = 916  " # I, [2014-09-24T13:52:08.506799 #9282]  INFO -- : create build ID: 701. key:916 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 702 where jc_id is null and id = 923  " # I, [2014-09-24T13:52:08.518310 #9300]  INFO -- : create build ID: 702. key:923 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 703 where jc_id is null and id = 925  " # I, [2014-09-24T13:52:08.530318 #9291]  INFO -- : create build ID: 703. key:925 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 704 where jc_id is null and id = 928  " # I, [2014-09-24T13:52:08.540922 #9282]  INFO -- : create build ID: 704. key:928 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 705 where jc_id is null and id = 929  " # I, [2014-09-24T13:52:08.551079 #9282]  INFO -- : create build ID: 705. key:929 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 706 where jc_id is null and id = 930  " # I, [2014-09-24T13:52:08.561235 #9282]  INFO -- : create build ID: 706. key:930 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 707 where jc_id is null and id = 935  " # I, [2014-09-24T13:52:08.571529 #9282]  INFO -- : create build ID: 707. key:935 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 708 where jc_id is null and id = 936  " # I, [2014-09-24T13:52:08.582118 #9291]  INFO -- : create build ID: 708. key:936 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 709 where jc_id is null and id = 947  " # I, [2014-09-24T13:52:08.592186 #9291]  INFO -- : create build ID: 709. key:947 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 710 where jc_id is null and id = 951  " # I, [2014-09-24T13:52:08.602429 #9291]  INFO -- : create build ID: 710. key:951 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 711 where jc_id is null and id = 952  " # I, [2014-09-24T13:52:08.612516 #9291]  INFO -- : create build ID: 711. key:952 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 712 where jc_id is null and id = 955  " # I, [2014-09-24T13:52:08.622336 #9291]  INFO -- : create build ID: 712. key:955 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 713 where jc_id is null and id = 956  " # I, [2014-09-24T13:52:08.632293 #9291]  INFO -- : create build ID: 713. key:956 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 714 where jc_id is null and id = 957  " # I, [2014-09-24T13:52:08.642259 #9291]  INFO -- : create build ID: 714. key:957 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 715 where jc_id is null and id = 958  " # I, [2014-09-24T13:52:08.652497 #9291]  INFO -- : create build ID: 715. key:958 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 716 where jc_id is null and id = 959  " # I, [2014-09-24T13:52:08.662601 #9291]  INFO -- : create build ID: 716. key:959 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 717 where jc_id is null and id = 960  " # I, [2014-09-24T13:52:08.672652 #9291]  INFO -- : create build ID: 717. key:960 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 718 where jc_id is null and id = 961  " # I, [2014-09-24T13:52:08.682882 #9291]  INFO -- : create build ID: 718. key:961 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 719 where jc_id is null and id = 962  " # I, [2014-09-24T13:52:08.692815 #9291]  INFO -- : create build ID: 719. key:962 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 720 where jc_id is null and id = 981  " # I, [2014-09-24T13:52:08.702836 #9291]  INFO -- : create build ID: 720. key:981 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 721 where jc_id is null and id = 990  " # I, [2014-09-24T13:52:08.712826 #9291]  INFO -- : create build ID: 721. key:990 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 722 where jc_id is null and id = 1020  " # I, [2014-09-24T13:52:08.722817 #9291]  INFO -- : create build ID: 722. key:1020 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 723 where jc_id is null and id = 1021  " # I, [2014-09-24T13:52:08.732715 #9291]  INFO -- : create build ID: 723. key:1021 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 724 where jc_id is null and id = 1022  " # I, [2014-09-24T13:52:08.742474 #9291]  INFO -- : create build ID: 724. key:1022 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 725 where jc_id is null and id = 1023  " # I, [2014-09-24T13:52:08.752242 #9291]  INFO -- : create build ID: 725. key:1023 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 726 where jc_id is null and id = 1024  " # I, [2014-09-24T13:52:08.762347 #9291]  INFO -- : create build ID: 726. key:1024 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 727 where jc_id is null and id = 1025  " # I, [2014-09-24T13:52:08.772169 #9291]  INFO -- : create build ID: 727. key:1025 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 728 where jc_id is null and id = 1026  " # I, [2014-09-24T13:52:08.781768 #9291]  INFO -- : create build ID: 728. key:1026 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 729 where jc_id is null and id = 1027  " # I, [2014-09-24T13:52:08.792546 #9282]  INFO -- : create build ID: 729. key:1027 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 730 where jc_id is null and id = 1028  " # I, [2014-09-24T13:52:08.802560 #9282]  INFO -- : create build ID: 730. key:1028 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 731 where jc_id is null and id = 1029  " # I, [2014-09-24T13:52:08.813065 #9282]  INFO -- : create build ID: 731. key:1029 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 732 where jc_id is null and id = 1030  " # I, [2014-09-24T13:52:08.823115 #9282]  INFO -- : create build ID: 732. key:1030 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 733 where jc_id is null and id = 1031  " # I, [2014-09-24T13:52:08.833023 #9291]  INFO -- : create build ID: 733. key:1031 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 734 where jc_id is null and id = 1032  " # I, [2014-09-24T13:52:08.842989 #9291]  INFO -- : create build ID: 734. key:1032 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 735 where jc_id is null and id = 1033  " # I, [2014-09-24T13:52:08.853032 #9282]  INFO -- : create build ID: 735. key:1033 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 736 where jc_id is null and id = 1034  " # I, [2014-09-24T13:52:08.863023 #9282]  INFO -- : create build ID: 736. key:1034 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 737 where jc_id is null and id = 1035  " # I, [2014-09-24T13:52:08.873127 #9282]  INFO -- : create build ID: 737. key:1035 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 738 where jc_id is null and id = 1036  " # I, [2014-09-24T13:52:08.884590 #9300]  INFO -- : create build ID: 738. key:1036 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 739 where jc_id is null and id = 1037  " # I, [2014-09-24T13:52:08.896734 #9318]  INFO -- : create build ID: 739. key:1037 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 740 where jc_id is null and id = 1038  " # I, [2014-09-24T13:52:08.907630 #9318]  INFO -- : create build ID: 740. key:1038 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 741 where jc_id is null and id = 1039  " # I, [2014-09-24T13:52:08.918374 #9300]  INFO -- : create build ID: 741. key:1039 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 742 where jc_id is null and id = 1040  " # I, [2014-09-24T13:52:08.929036 #9300]  INFO -- : create build ID: 742. key:1040 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 743 where jc_id is null and id = 1041  " # I, [2014-09-24T13:52:08.939308 #9300]  INFO -- : create build ID: 743. key:1041 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 744 where jc_id is null and id = 1042  " # I, [2014-09-24T13:52:08.949911 #9300]  INFO -- : create build ID: 744. key:1042 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 745 where jc_id is null and id = 1043  " # I, [2014-09-24T13:52:08.960664 #9318]  INFO -- : create build ID: 745. key:1043 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 746 where jc_id is null and id = 1044  " # I, [2014-09-24T13:52:08.972330 #9318]  INFO -- : create build ID: 746. key:1044 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 747 where jc_id is null and id = 1045  " # I, [2014-09-24T13:52:08.982689 #9318]  INFO -- : create build ID: 747. key:1045 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 748 where jc_id is null and id = 1046  " # I, [2014-09-24T13:52:08.993507 #9318]  INFO -- : create build ID: 748. key:1046 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 749 where jc_id is null and id = 1047  " # I, [2014-09-24T13:52:09.004105 #9318]  INFO -- : create build ID: 749. key:1047 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 750 where jc_id is null and id = 1048  " # I, [2014-09-24T13:52:09.014847 #9318]  INFO -- : create build ID: 750. key:1048 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 751 where jc_id is null and id = 1049  " # I, [2014-09-24T13:52:09.025615 #9318]  INFO -- : create build ID: 751. key:1049 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 752 where jc_id is null and id = 1050  " # I, [2014-09-24T13:52:09.036555 #9318]  INFO -- : create build ID: 752. key:1050 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 753 where jc_id is null and id = 1051  " # I, [2014-09-24T13:52:09.047597 #9318]  INFO -- : create build ID: 753. key:1051 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 754 where jc_id is null and id = 1052  " # I, [2014-09-24T13:52:09.058727 #9318]  INFO -- : create build ID: 754. key:1052 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 755 where jc_id is null and id = 1053  " # I, [2014-09-24T13:52:09.071382 #9300]  INFO -- : create build ID: 755. key:1053 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 756 where jc_id is null and id = 1054  " # I, [2014-09-24T13:52:09.082388 #9300]  INFO -- : create build ID: 756. key:1054 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 757 where jc_id is null and id = 1055  " # I, [2014-09-24T13:52:09.092700 #9300]  INFO -- : create build ID: 757. key:1055 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 758 where jc_id is null and id = 1056  " # I, [2014-09-24T13:52:09.103373 #9318]  INFO -- : create build ID: 758. key:1056 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 759 where jc_id is null and id = 1057  " # I, [2014-09-24T13:52:09.114257 #9318]  INFO -- : create build ID: 759. key:1057 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 760 where jc_id is null and id = 1058  " # I, [2014-09-24T13:52:09.125201 #9318]  INFO -- : create build ID: 760. key:1058 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 761 where jc_id is null and id = 1059  " # I, [2014-09-24T13:52:09.136407 #9318]  INFO -- : create build ID: 761. key:1059 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 762 where jc_id is null and id = 1060  " # I, [2014-09-24T13:52:09.146989 #9318]  INFO -- : create build ID: 762. key:1060 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 763 where jc_id is null and id = 1061  " # I, [2014-09-24T13:52:09.158025 #9318]  INFO -- : create build ID: 763. key:1061 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 764 where jc_id is null and id = 1062  " # I, [2014-09-24T13:52:09.169095 #9318]  INFO -- : create build ID: 764. key:1062 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 765 where jc_id is null and id = 1063  " # I, [2014-09-24T13:52:09.180289 #9318]  INFO -- : create build ID: 765. key:1063 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 766 where jc_id is null and id = 1064  " # I, [2014-09-24T13:52:09.191308 #9318]  INFO -- : create build ID: 766. key:1064 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 767 where jc_id is null and id = 1065  " # I, [2014-09-24T13:52:09.202935 #9318]  INFO -- : create build ID: 767. key:1065 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 768 where jc_id is null and id = 1066  " # I, [2014-09-24T13:52:09.214227 #9318]  INFO -- : create build ID: 768. key:1066 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 769 where jc_id is null and id = 1067  " # I, [2014-09-24T13:52:09.225843 #9318]  INFO -- : create build ID: 769. key:1067 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 770 where jc_id is null and id = 1068  " # I, [2014-09-24T13:52:09.237699 #9318]  INFO -- : create build ID: 770. key:1068 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 771 where jc_id is null and id = 1069  " # I, [2014-09-24T13:52:09.248547 #9318]  INFO -- : create build ID: 771. key:1069 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 772 where jc_id is null and id = 1070  " # I, [2014-09-24T13:52:09.259898 #9318]  INFO -- : create build ID: 772. key:1070 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 773 where jc_id is null and id = 1071  " # I, [2014-09-24T13:52:09.272321 #9300]  INFO -- : create build ID: 773. key:1071 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 774 where jc_id is null and id = 1072  " # I, [2014-09-24T13:52:09.283540 #9300]  INFO -- : create build ID: 774. key:1072 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 775 where jc_id is null and id = 1073  " # I, [2014-09-24T13:52:09.294431 #9300]  INFO -- : create build ID: 775. key:1073 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 776 where jc_id is null and id = 1074  " # I, [2014-09-24T13:52:09.305028 #9300]  INFO -- : create build ID: 776. key:1074 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 777 where jc_id is null and id = 1075  " # I, [2014-09-24T13:52:09.322472 #9300]  INFO -- : create build ID: 777. key:1075 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 778 where jc_id is null and id = 1076  " # I, [2014-09-24T13:52:09.339660 #9300]  INFO -- : create build ID: 778. key:1076 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 779 where jc_id is null and id = 1077  " # I, [2014-09-24T13:52:09.353218 #9300]  INFO -- : create build ID: 779. key:1077 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 780 where jc_id is null and id = 1078  " # I, [2014-09-24T13:52:09.363489 #9300]  INFO -- : create build ID: 780. key:1078 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 781 where jc_id is null and id = 1079  " # I, [2014-09-24T13:52:09.373697 #9300]  INFO -- : create build ID: 781. key:1079 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 782 where jc_id is null and id = 1080  " # I, [2014-09-24T13:52:09.388338 #9318]  INFO -- : create build ID: 782. key:1080 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 783 where jc_id is null and id = 1081  " # I, [2014-09-24T13:52:09.399011 #9318]  INFO -- : create build ID: 783. key:1081 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 784 where jc_id is null and id = 1082  " # I, [2014-09-24T13:52:09.455910 #9300]  INFO -- : create build ID: 784. key:1082 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 785 where jc_id is null and id = 1083  " # I, [2014-09-24T13:52:09.469932 #9291]  INFO -- : create build ID: 785. key:1083 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 786 where jc_id is null and id = 1084  " # I, [2014-09-24T13:52:09.480610 #9291]  INFO -- : create build ID: 786. key:1084 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 787 where jc_id is null and id = 1085  " # I, [2014-09-24T13:52:09.490697 #9291]  INFO -- : create build ID: 787. key:1085 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 788 where jc_id is null and id = 1088  " # I, [2014-09-24T13:52:09.501042 #9291]  INFO -- : create build ID: 788. key:1088 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 789 where jc_id is null and id = 1089  " # I, [2014-09-24T13:52:09.511296 #9291]  INFO -- : create build ID: 789. key:1089 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 790 where jc_id is null and id = 1090  " # I, [2014-09-24T13:52:09.521750 #9291]  INFO -- : create build ID: 790. key:1090 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 791 where jc_id is null and id = 1091  " # I, [2014-09-24T13:52:09.531983 #9291]  INFO -- : create build ID: 791. key:1091 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 792 where jc_id is null and id = 1092  " # I, [2014-09-24T13:52:09.542206 #9291]  INFO -- : create build ID: 792. key:1092 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 793 where jc_id is null and id = 1093  " # I, [2014-09-24T13:52:09.552498 #9291]  INFO -- : create build ID: 793. key:1093 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 794 where jc_id is null and id = 1094  " # I, [2014-09-24T13:52:09.562592 #9291]  INFO -- : create build ID: 794. key:1094 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 795 where jc_id is null and id = 1095  " # I, [2014-09-24T13:52:09.572611 #9291]  INFO -- : create build ID: 795. key:1095 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 796 where jc_id is null and id = 1096  " # I, [2014-09-24T13:52:09.582462 #9291]  INFO -- : create build ID: 796. key:1096 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 797 where jc_id is null and id = 1097  " # I, [2014-09-24T13:52:09.592415 #9291]  INFO -- : create build ID: 797. key:1097 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 798 where jc_id is null and id = 1098  " # I, [2014-09-24T13:52:09.603123 #9291]  INFO -- : create build ID: 798. key:1098 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 799 where jc_id is null and id = 1099  " # I, [2014-09-24T13:52:09.613739 #9291]  INFO -- : create build ID: 799. key:1099 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 800 where jc_id is null and id = 1100  " # I, [2014-09-24T13:52:09.624059 #9291]  INFO -- : create build ID: 800. key:1100 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 801 where jc_id is null and id = 1101  " # I, [2014-09-24T13:52:09.634058 #9291]  INFO -- : create build ID: 801. key:1101 ok
+ 
+  mysql -h mysql3.adriver.x -ujessy -pjessy jessy -sNe " update builds set jc_id = 802 where jc_id is null and id = 1102  " # I, [2014-09-24T13:52:09.644226 #9291]  INFO -- : create build ID: 802. key:1102 ok
+ 
