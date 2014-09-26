@@ -246,7 +246,7 @@ class BuildsController < ApplicationController
 
 
             if jc_id
-                @project.history.create!( { :action => "delete jc build, build ID: #{params[:id]}, jc ID: #{jc_id}" })            
+                @project.history.create!( { :commiter => current_user.username, :action => "delete jc build, build ID: #{params[:id]}, jc ID: #{jc_id}" })            
                 @project.jcc.request :delete, "/builds/#{jc_id}"
             end
     
