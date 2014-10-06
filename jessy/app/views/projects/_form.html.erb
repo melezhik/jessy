@@ -62,20 +62,33 @@
  <%- unless @project.sources_ordered.empty? %>
 
 <h2> Change project components </h2>
-    <ol>   
+	<table class="table-bordered table-striped table">   
+	<tr>
+		<th>Sort Number</th>
+		<th>URL</th>
+		<th>SCM Type</th>
+		<th>Is Application Main Component ?</th>
+		<th>Actions</th>
+	</tr>
     <% @project.sources_ordered.each do |item| %>
-      <li>
-
+      <tr>
+        <td><%= item[:sn] %></td>
+        <td><%= item._indexed_url  %></td>
+        <td>[<%= item[:scm_type] %>]</td>
         <% if item.id == @project.distribution_source_id %>
-             [<%= item[:scm_type] %>] <%= link_to item._indexed_url , item.url, title: "SCM TYPE:#{item.scm_type};  ID:#{item.id};  SN:#{item.sn}; Application Main Component" %> [ Application Main Component
+            <td>true</td>
         <% else %>
-             [<%= item[:scm_type] %>] <%= link_to item._indexed_url , item.url, title: "SCM TYPE:#{item.scm_type};  ID:#{item.id};  SN:#{item.sn};" %>
-            [ <%= link_to 'App', [ :app, item.project, item   ], method: :post,  title: "mark this source as an application source" %>
+            <td>false</td>
+        <% end %> 
+        <td>
+        <% unless item.id == @project.distribution_source_id %>
+            <%= link_to 'App', [ :app, item.project, item   ], method: :post,  title: "mark this source as an application source" %> |
         <% end %>
-        <%= link_to 'Delete', [ item.project, item], method: :delete, title: "remove this source", data: { confirm: "You are about to delete source # #{item[:id]} in project #{@project[:id]}. Are you shure ?" }   %> ]
-      </li>
+            <%= link_to 'Delete', [ item.project, item], method: :delete, title: "remove this source", data: { confirm: "You are about to delete source # #{item[:id]} in project #{@project[:id]}. Are you shure ?" }   %>
+        </td>
+      </tr>
     <% end %>
-    </ol>
+    </table>
 
 
 [ <%= link_to "Change sources sort order",  edit_project_source_path( @project, @project.sources_ordered.first ) %> ]
