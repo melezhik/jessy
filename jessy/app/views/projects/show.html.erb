@@ -10,7 +10,7 @@
 
 <%- if @project.last_build and  @project.last_build.has_components? %>
 <pre>
-  <strong>Components:</strong>
+  <strong>Latest Build Summary:</strong>
 <% @project.last_build.components.each do |item| %>
     <%= link_to item.indexed_url , item.url, title: "SCM TYPE: #{item.scm_type} ID:#{item.id}" %> | rev: <%= item[:revision] %>
 <% end %>
