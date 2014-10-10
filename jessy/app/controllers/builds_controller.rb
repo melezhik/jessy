@@ -33,7 +33,7 @@ class BuildsController < ApplicationController
 
 
         if current_user.nil?
-            comm = 'anonumous'
+            comm = 'anonimous'
         else
             comm = current_user.username
         end
@@ -227,6 +227,13 @@ class BuildsController < ApplicationController
         @project = Project.find(params[:project_id])
         build = Build.find(params[:id])
 
+        if current_user.nil?
+            comm = 'anonimous'
+        else
+            comm = current_user.username
+        end
+
+
         `pinto --root=#{Setting.take.pinto_repo_root} kill #{@project.id}-#{build.id}`
 
         jc_id = nil
@@ -238,7 +245,7 @@ class BuildsController < ApplicationController
             jc_id = build.jc_id
             build.destroy
             if user_signed_in?
-                @project.history.create!( { :commiter => current_user.username, :action => "delete build ID: #{params[:id]}" })
+                @project.history.create!( { :commiter => comm, :action => "delete build ID: #{params[:id]}" })
                 flash[:notice] = "build ID:#{params[:id]} for project ID:#{params[:project_id]} has been successfully deleted"
             else
                 @project.history.create!( { :action => "delete build ID: #{params[:id]}" })
@@ -246,7 +253,7 @@ class BuildsController < ApplicationController
 
 
             if jc_id
-                @project.history.create!( { :commiter => current_user.username, :action => "delete jc build, build ID: #{params[:id]}, jc ID: #{jc_id}" })            
+                @project.history.create!( { :commiter => comm, :action => "delete jc build, build ID: #{params[:id]}, jc ID: #{jc_id}" })            
                 @project.jcc.request :delete, "/builds/#{jc_id}"
             end
     
@@ -266,7 +273,7 @@ class BuildsController < ApplicationController
         @project = Project.find(params[:project_id])
         @build = Build.find(params[:id])
 
-        
+
         if @build.update({ :released => true, :locked => true })
             flash[:notice] = "build ID:#{@build.id} has been successfully marked as released"
             @project.history.create!( { :commiter => current_user.username, :action => "release build ID: #{@build.id}" })
