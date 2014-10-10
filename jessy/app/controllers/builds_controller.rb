@@ -5,7 +5,7 @@ require 'open3'
 
 class BuildsController < ApplicationController
 
-    skip_before_filter :authenticate_user!, :only => [ :destroy, :download, :revert ]
+    skip_before_filter :authenticate_user!, :only => [ :destroy, :download, :revert, :create ]
 
     def create
 
@@ -17,11 +17,24 @@ class BuildsController < ApplicationController
         @build.touch_log_file
 
         make_snapshot @project, @build
-        @project.history.create!( { :commiter => current_user.username, :action => "run build ID: #{@build.id}" })
+
+        if current_user.nil?
+            comm = 'anonimous'
+        else
+            comm = current_user.username
+        end
+
+        @project.history.create!( { :commiter => comm, :action => "run build ID: #{@build.id}" })
 
         Delayed::Job.enqueue(BuildAsync.new(@project, @build, Distribution, Setting.take, { :root_url => root_url  } ),0, Time.zone.now ) 
-        flash[:notice] = "build ID: #{@build.id} for project ID: #{params[:project_id]} has been successfully scheduled at #{Time.zone.now}"
-        redirect_to project_path(@project)
+        message = "build ID: #{@build.id} for project ID: #{params[:project_id]} has been successfully scheduled at #{Time.zone.now}"
+        flash[:notice] = message
+
+        if request.env["HTTP_REFERER"].nil?
+            render  :text => "#{message}\n"
+        else
+            redirect_to @project 
+        end
     
     end
 

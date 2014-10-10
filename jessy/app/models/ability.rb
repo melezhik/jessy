@@ -22,6 +22,7 @@ class Ability
          can :read, :all
          can :revert, Build 
          can :destroy, Build 
+         can :create, Build 
          can :download, Build 
          can :last_successfull_build, [Project]
        end
