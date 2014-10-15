@@ -73,9 +73,9 @@ class Project < ActiveRecord::Base
 
     def jc_hosts
         [
-            {  :name => :squeeze,  :url => 'http://pinto.webdev.x:4000' },
-            {  :name => :wheezy , :url  => 'http://jc-wheezy.x:4000' },
-            {  :name => :squeeze_test,  :url => 'http://pinto.webdev.x:4001' }
+            {  :name => 'default : debian6 ( pinto.webdev.x:4000 )',  :url => 'http://pinto.webdev.x:4000' },
+            {  :name => 'new: debian7 ( jc-wheezy.x:4000 )' , :url  => 'http://jc-wheezy.x:4000' },
+            {  :name => 'test: debian6 ( pinto.webdev.x:4001 ) ',  :url => 'http://pinto.webdev.x:4001' }
         ]
     end
 end
