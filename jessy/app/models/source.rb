@@ -8,6 +8,19 @@ class Source < ActiveRecord::Base
         state == true
     end
 
+
+    def git_br_or_tag
+
+        if ! git_branch.nil? and ! :git_branch.empty?
+            git_branch
+        elsif ! git_tag.nil? and ! :git_tag.empty?
+            "#{git_tag} tag"
+        else
+            'master'    
+        end
+
+    end
+
     def _indexed_url
         res = nil
         if scm_type == 'svn'
@@ -17,7 +30,7 @@ class Source < ActiveRecord::Base
                 res = url
             end
         elsif scm_type == 'git'
-            res = url + ' ' + ( git_branch || 'master' ) + ' ' + ( git_folder || '' )
+            res = url + ' ' + git_br_or_tag + ' ' + ( git_folder || '' )
         end
         res
     end

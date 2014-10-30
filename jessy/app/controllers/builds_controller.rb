@@ -74,7 +74,7 @@ class BuildsController < ApplicationController
             i = 0
             parent_build.components.each do |cmp|
                 i += 1    
-                new_source = @project.sources.create({ :scm_type => cmp[:scm_type] , :url => cmp.url , :sn => i*10, :git_branch => cmp[:git_branch], :git_folder => cmp[:git_folder]  })
+                new_source = @project.sources.create({ :scm_type => cmp[:scm_type] , :url => cmp.url , :sn => i*10, :git_tag => cmp[:git_tag], :git_branch => cmp[:git_branch], :git_folder => cmp[:git_folder]  })
                 new_source.save!
                 @build.log :debug, "add #{cmp.indexed_url} to project ID:#{@project.id}"
                 if cmp.main?
@@ -88,6 +88,7 @@ class BuildsController < ApplicationController
                     :schema => cmp[:schema],
                     :is_distribution_url => cmp[:is_distribution_url],
                     :git_branch => cmp[:git_branch], 
+                    :git_tag => cmp[:git_tag], 
                     :git_folder => cmp[:git_folder]
                 })
                 cmp_new.save!
@@ -375,7 +376,7 @@ private
    def make_snapshot project, build
          # snapshoting current configuration before schedulling new build
          project.sources_enabled.each  do |s|
-            cmp = build.snapshots.create!({ :indexed_url => s._indexed_url, :scm_type => s.scm_type, :git_folder => s.git_folder, :git_branch => s.git_branch    } )
+            cmp = build.snapshots.create!({ :indexed_url => s._indexed_url, :scm_type => s.scm_type, :git_folder => s.git_folder, :git_branch => s.git_branch, :git_tag => s.git_tag    } )
             cmp.save!
             if project.distribution_indexed_url == s._indexed_url
                 cmp.update!( { :is_distribution_url => true } )

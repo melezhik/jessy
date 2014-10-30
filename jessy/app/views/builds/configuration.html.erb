@@ -41,7 +41,7 @@
         <td><%= item.url %></td>
         <td><%= item[:schema] %></td>
         <td><%= item[:scm_type] %></td>
-        <td><%= item[:scm_type] == 'git' ? (  item[:git_branch] || 'master' ) : '---' %></td>
+        <td><%= item[:scm_type] == 'git' ? item.git_br_or_tag : '---' %></td>
         <td><%= item[:git_folder] || '---' %></td>
         <td><%= item[:is_distribution_url]? 'yes' : 'no'  %></td>
         <td><%= item[:revision] || '---' %></td>

@@ -11,9 +11,11 @@
 <%= form_for([@project, @project.sources.build]) do |f| %>
   <p>
     <%= f.label 'Scm Type' %><br>
-    <%= f.select :scm_type, options_for_select(['svn', 'git' ]),  {}, :onChange=>"javascript: if (this.selectedIndex == 1) { \n this.form.source_git_branch.disabled = false; \n this.form.source_git_folder.disabled = false; \n }; \n\n if (this.selectedIndex == 0 ) { \n this.form.source_git_branch.disabled = true; \n this.form.source_git_folder.disabled = true; \n this.form.source_git_branch.value = ''; this.form.source_git_folder.value = ''; };  "  %><br>
+    <%= f.select :scm_type, options_for_select(['svn', 'git' ]),  {}, :onChange=>"javascript: if (this.selectedIndex == 1) { \n this.form.source_git_tag.disabled = false; \n this.form.source_git_branch.disabled = false; \n this.form.source_git_folder.disabled = false; \n }; \n\n if (this.selectedIndex == 0 ) { \n this.form.source_git_tag.disabled = true; \n this.form.source_git_branch.disabled = true; \n this.form.source_git_folder.disabled = true; \n this.form.source_git_tag.value = ''; \n this.form.source_git_branch.value = ''; this.form.source_git_folder.value = ''; };  "  %><br>
     <%= f.label :git_branch %><br>
     <%= f.text_field :git_branch, :disabled => true %><br>
+    <%= f.label :git_tag %><br>
+    <%= f.text_field :git_tag, :disabled => true %><br>
     <%= f.label :git_folder %><br>
     <%= f.text_field :git_folder, :disabled => true %>
   </p>
