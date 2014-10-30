@@ -21,4 +21,16 @@ class Snapshot < ActiveRecord::Base
         is_distribution_url == true        
     end
 
+    def git_br_or_tag
+
+        if ! git_branch.nil? and ! :git_branch.empty?
+            git_branch
+        elsif ! git_tag.nil? and ! :git_tag.empty?
+            "#{git_tag} tag"
+        else
+            'master'    
+        end
+
+    end
+
 end
