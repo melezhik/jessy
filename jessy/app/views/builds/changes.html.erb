@@ -58,7 +58,7 @@
    </td>
     <td>
         <%= form_for([@project, @build], url: { action: "changes" }, method: :get  ) do |f| %>
-             <%= f.select :id, options_for_select(@project.builds.reverse.map {|b| b.id}) %>
+             <%= f.select :id, options_for_select(@project.builds.reverse.map {|b| b.released? ? [ "[R] #{b.id}", b.id ] : [b.id] }) %>
              <%= f.submit "Compare" %> 
        <% end %>
     </td>
