@@ -23,4 +23,5 @@ public/assets/
 
 
 config/ldap.yml
+config/database.yml
 
