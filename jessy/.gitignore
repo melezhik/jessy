@@ -22,3 +22,5 @@ public/repo
 public/assets/
 
 
+config/ldap.yml
+
