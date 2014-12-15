@@ -156,9 +156,3 @@ Here I "drop" some common actions which may be done with restfull api as well
 - [delayed job](https://github.com/collectiveidea/delayed_job)
 
 
-# Мониторинг jc сборщиков в глазе
-- http://moon5.adriver.x:3000/reports/22/view
-- http://moon5.adriver.x:3000/reports/23/view
-
-
-
